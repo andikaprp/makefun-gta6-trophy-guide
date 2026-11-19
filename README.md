@@ -4,19 +4,13 @@
 [![rank](https://make.fun/badge/gta6-trophy-guide-01/andikaprp/makefun-gta6-trophy-guide/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 [![reward](https://make.fun/badge/gta6-trophy-guide-01/andikaprp/makefun-gta6-trophy-guide/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 
-Leonida Legend - an offline trophy guide and progress tracker for Grand Theft Auto VI (PS5). All 55 official trophies with structured guidance for each one: numbered method steps, requirements, an effort estimate and a status. The trophies whose unlock method is not yet confirmed carry a labelled reading of the official description, a play-it-safe habit that covers the plausible trigger, and the signal that will confirm the method after launch - nothing is invented. A seven-step roadmap with dependencies, per-step effort and point-of-no-return flags leads to the platinum, and the tracker saves progress per grade and per kind, with watch and unconfirmed filters, a spoiler shield for hidden trophies, and export/import of your progress. No network, no build step, no artwork from the game - just open the app.
+Leonida Legend - an offline trophy guide and tracker for all 55 Grand Theft Auto VI PS5 trophies. The names, descriptions, grades and hidden flags are the official list as served by PlayStation Network and the Xbox catalog on launch day and cross-checked across five sources; every trophy carries a structured guide (method steps, requirements, effort, status) with its sources named. The six trophies whose methods are unconfirmed at launch carry no invented steps - instead a labelled reading of the official description, a play-it-safe habit and the signal that will confirm the method. One trophy, Positive Mental Attitude, sits on a missable watch. The tracker saves progress in the browser, with per-grade and per-kind counts, kind and grade filters, search, sort, step grouping, a spoiler shield for the 28 hidden trophies, and export/import. An eight-step roadmap with dependencies, per-step effort and the list's single point-of-no-return flag leads to the platinum.
 
 ## Run it
 
 ```sh
-node serve.ts
-# then open http://localhost:8080 - or open app/index.html in any browser
-```
-
-Hand it in (writes app/, screenshots/ and dossier.json to the output directory):
-
-```sh
-MAKEFUN_OUTPUT_DIR=out node main.ts
+MAKEFUN_OUTPUT_DIR=/tmp/leonida-out node main.ts   # validate the data and write the dossier
+node serve.ts                                      # serve the guide at http://127.0.0.1:8321
 ```
 
 ---

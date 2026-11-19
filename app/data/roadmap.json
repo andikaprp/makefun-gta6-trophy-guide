@@ -1,151 +1,87 @@
 {
- "steps": [
-  {
-   "step": 1,
-   "title": "First light in Leonida",
-   "summary": "The opening hours and Chapter 1. Start the two habits that protect the whole run here: meditate at every spot the moment you reach it, and keep a manual save before major story choices.",
-   "effort": "≈3-4 hours",
-   "depends_on": [],
-   "point_of_no_return": true,
-   "ponr_note": "The meditation watch starts here. Positive Mental Attitude may depend on Chapter 1 spots staying reachable - unconfirmed, but the safe habit costs nothing: meditate at each spot when you first reach it, never later.",
-   "trophy_ids": [
-    "just-like-paradise",
-    "paradise-lost",
-    "master-of-none",
-    "positive-mental-attitude",
-    "in-the-beginning"
-   ]
-  },
-  {
-   "step": 2,
-   "title": "Chapters 2 and 3",
-   "summary": "The story spine through the middle chapters, with the named missions that carry their own trophies.",
-   "effort": "≈5-6 hours",
-   "depends_on": [
-    1
-   ],
-   "point_of_no_return": false,
-   "ponr_note": "",
-   "trophy_ids": [
-    "t-s-ass-drug-money",
-    "vice-city-baby",
-    "trust",
-    "family-matters",
-    "dwnfall"
-   ]
-  },
-  {
-   "step": 3,
-   "title": "Chapter 4 and the big scores",
-   "summary": "The last numbered chapter and the set-piece missions - the Cartel Heist above all. Come armed and funded.",
-   "effort": "≈4-5 hours",
-   "depends_on": [
-    2
-   ],
-   "point_of_no_return": false,
-   "ponr_note": "",
-   "trophy_ids": [
-    "top-of-the-world-ma",
-    "break-the-bank",
-    "hi-jacked",
-    "snow-storm"
-   ]
-  },
-  {
-   "step": 4,
-   "title": "Strangers and strands",
-   "summary": "Every stranger strand, finished one at a time: Andy, Kenton, Billy, Randy, Tyrone, Bret and Cal. Their finales carry six trophies and most of the Strangers & Freaks silver.",
-   "effort": "≈7-9 hours",
-   "depends_on": [
-    2
-   ],
-   "point_of_no_return": false,
-   "ponr_note": "",
-   "trophy_ids": [
-    "baited-my-tackle",
-    "road-to-rehabilitation",
-    "this-was-no-boat-accident",
-    "the-lone-rider",
-    "strangers-freaks",
-    "supply-demand",
-    "spin-on-this",
-    "fair-game"
-   ]
-  },
-  {
-   "step": 5,
-   "title": "Leonida at large",
-   "summary": "The open state: stunts, the shooting range, races, cards, WAiNK locations, exploration and the money milestones. Route this district by district alongside everything else.",
-   "effort": "≈15-20 hours",
-   "depends_on": [
-    1
-   ],
-   "point_of_no_return": false,
-   "ponr_note": "",
-   "trophy_ids": [
-    "cunning-stunts",
-    "the-shootist",
-    "top-fun",
-    "earn-cash-not-kudos",
-    "stick-fiddler",
-    "dont-touch-my-deck",
-    "you-wainker",
-    "one-last-thing",
-    "whip-it-good",
-    "the-goodtime-state",
-    "lets-go-bowling",
-    "dime-on-the-dollar",
-    "treat-yo-self",
-    "little-boxes",
-    "on-the-spot"
-   ]
-  },
-  {
-   "step": 6,
-   "title": "Heat, feats and the unexplained",
-   "summary": "Partner crime, set-piece robberies, combat feats - and the trophies nobody has decoded yet, handled with readings and safe habits rather than invented methods.",
-   "effort": "≈6-8 hours",
-   "depends_on": [
-    3
-   ],
-   "point_of_no_return": false,
-   "ponr_note": "",
-   "trophy_ids": [
-    "hot-together",
-    "retail-therapy",
-    "gunslinger",
-    "catch-me-if-you-can",
-    "challenging-tank",
-    "sneakthief",
-    "maximum-withdrawal",
-    "a-classic-blitz-play",
-    "pest-control",
-    "capital-offense",
-    "personal-best",
-    "actions-speak-louder",
-    "bad-luck-i-guess",
-    "the-truth-is-out-there",
-    "ten-pin"
-   ]
-  },
-  {
-   "step": 7,
-   "title": "The finale and the long road",
-   "summary": "The final mission, then the 100% checklist, then the platinum that awards itself. If the count stalls, the board's per-kind counts show exactly what is left.",
-   "effort": "The rest of the game",
-   "depends_on": [
-    3,
-    4,
-    5,
-    6
-   ],
-   "point_of_no_return": false,
-   "ponr_note": "",
-   "trophy_ids": [
-    "you-gotta-know-when-to-get-off",
-    "a-long-road",
-    "vice-got-a-price"
-   ]
-  }
- ]
+  "title": "Roadmap to the platinum",
+  "note": "Eight steps in the order a first playthrough should meet them. Only one flag on the whole road is a point of no return: the meditation watch in step 1. Everything else can be cleaned up after the story.",
+  "steps": [
+    {
+      "step": 1,
+      "id": "touchdown-in-leonida",
+      "title": "Touchdown in Leonida",
+      "summary": "The opening hours: finish Chapter 1, take in Ocean Beach while you are there, and start the one habit this roadmap insists on - meditating at every spot the first time you reach it.",
+      "effort": "The opening chapter; a couple of hours",
+      "depends_on": [],
+      "point_of_no_return": true,
+      "point_of_no_return_note": "Positive Mental Attitude is the list's one missable watch: PowerPyx and U7Buy flag that a Chapter 1 meditation spot may not be reachable later. Meditate on arrival, every time, from the very first spot.",
+      "trophies": ["paradise-lost", "in-the-beginning", "positive-mental-attitude"]
+    },
+    {
+      "step": 2,
+      "id": "first-threads",
+      "title": "First threads",
+      "summary": "Chapter 2 and the first named missions, and the moment to open the stranger strands: Strangers & Freaks counts eight finished strands, so every strand started early is one less to chase at the end.",
+      "effort": "Early story plus the first side strands",
+      "depends_on": [1],
+      "point_of_no_return": false,
+      "trophies": ["just-like-paradise", "ts-ass-drug-money", "trust", "strangers-and-freaks"]
+    },
+    {
+      "step": 3,
+      "id": "the-middle-chapters",
+      "title": "The middle chapters",
+      "summary": "Chapters 3 and 4 with the missions that sit inside them. Keep meditating on arrival and keep the stranger strands moving between story beats.",
+      "effort": "The middle of the campaign",
+      "depends_on": [2],
+      "point_of_no_return": false,
+      "trophies": ["vice-city-baby", "family-matters", "dwnfall", "top-of-the-world-ma"]
+    },
+    {
+      "step": 4,
+      "id": "big-scores",
+      "title": "Big scores",
+      "summary": "The heist heart of the game: the Cartel Heist, the VCIA operation and Savage Glory in the story, and the free-roam scores - bank vaults, an armored truck and one clean jewelry job - while your crew and loadout are at their strongest.",
+      "effort": "Late-story missions plus five vaults and two roadside jobs",
+      "depends_on": [3],
+      "point_of_no_return": false,
+      "trophies": ["break-the-bank", "hi-jacked", "snow-storm", "sneakthief", "maximum-withdrawal", "a-classic-blitz-play"]
+    },
+    {
+      "step": 5,
+      "id": "loose-ends-for-friends",
+      "title": "Loose ends for friends",
+      "summary": "Close out the named strands: the final missions for Andy, Kenton, Billy, Randy and Tyrone, and Bret's unique-animal hunt. Each finale carries its own trophy and feeds the Strangers & Freaks count from step 2.",
+      "effort": "Six side arcs, each a few missions",
+      "depends_on": [3],
+      "point_of_no_return": false,
+      "trophies": ["road-to-rehabilitation", "this-was-no-boat-accident", "the-lone-rider", "supply-and-demand", "spin-on-this", "fair-game"]
+    },
+    {
+      "step": 6,
+      "id": "leonida-pastimes",
+      "title": "Leonida pastimes",
+      "summary": "The activity belt: ranges, races, stunts, fishing, bowling, partner trouble and gang work. Most of these open early and ripen slowly - sample everything for Master of None, then grind the counters (250 stunts, 20 race wins) a few at a time between missions.",
+      "effort": "Spread across the whole playthrough; the stunt counter is the long pole",
+      "depends_on": [2],
+      "point_of_no_return": false,
+      "trophies": ["cunning-stunts", "master-of-none", "the-shootist", "top-fun", "earn-cash-not-kudos", "baited-my-tackle", "stick-fiddler", "lets-go-bowling", "hot-together", "retail-therapy", "gunslinger", "catch-me-if-you-can", "challenging-tank", "pest-control", "ten-pin"]
+    },
+    {
+      "step": 7,
+      "id": "the-completionist-sweep",
+      "title": "The completionist sweep",
+      "summary": "The collectors' pass: card sets, 100 WAiNK locations, 100 vehicles, every corner of the map, the money totals and the garage keys - plus the four cryptic trophies whose covering habits (showroom exits, instant retries, staying for strange events, partner play) should already be second nature by now.",
+      "effort": "The longest step; mostly travel and tally-keeping",
+      "depends_on": [6],
+      "point_of_no_return": false,
+      "trophies": ["dont-touch-my-deck", "you-wainker", "one-last-thing", "whip-it-good", "the-goodtime-state", "dime-on-the-dollar", "treat-yo-self", "little-boxes", "on-the-spot", "capital-offense", "personal-best", "actions-speak-louder", "bad-luck-i-guess", "the-truth-is-out-there"]
+    },
+    {
+      "step": 8,
+      "id": "endgame-and-the-platinum",
+      "title": "Endgame and the platinum",
+      "summary": "Finish the final mission, close the last percentage points of the completion counter, and the platinum follows the 54th trophy on its own. If anything is still open, the tracker board is the checklist - nothing on this road is missable except the step 1 watch you have already kept.",
+      "effort": "The finale plus whatever the sweep left behind",
+      "depends_on": [4, 5, 7],
+      "point_of_no_return": false,
+      "trophies": ["you-gotta-know-when-to-get-off", "a-long-road", "vice-got-a-price"]
+    }
+  ]
 }

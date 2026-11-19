@@ -1,99 +1,110 @@
 // Leonida Legend - progress tracker.
-// Progress lives in this browser's localStorage and nowhere else.
-// Export/import moves it between browsers as a small JSON document.
+// Earned state lives in localStorage on this device only. Nothing is sent
+// anywhere. Export downloads a small JSON file; import reads one back.
+//
+// Demo mode: opening the app with ?demo=1 and no saved progress seeds an
+// honest sample (14 of 55 earned, all plausible early-game trophies) so
+// screenshots and first visits show the tracker mid-journey. The sample
+// is labelled as a sample wherever it matters.
 
-const STORAGE_KEY = 'leonida-legend.progress.v2';
+const Tracker = (() => {
+  const KEY = 'leonida-legend.progress.v1';
 
-// The honest sample used for ?demo=1 - a plausible early playthrough:
-// chapters 1-4 and Gone Fishing done, three named missions, the activity
-// sampler, and a handful of world trophies. 14 of 55, seeded by the
-// trophies' list numbers so it cannot drift from the data.
-export const DEMO_NS = [1, 2, 3, 4, 5, 7, 9, 10, 15, 19, 20, 35, 43, 45];
+  const DEMO_EARNED = [
+    'paradise-lost',
+    'one-last-thing',
+    'trust',
+    'just-like-paradise',
+    'ts-ass-drug-money',
+    'master-of-none',
+    'stick-fiddler',
+    'baited-my-tackle',
+    'the-shootist',
+    'whip-it-good',
+    'gunslinger',
+    'catch-me-if-you-can',
+    'vice-city-baby',
+    'family-matters',
+  ];
 
-function blankState() {
-  return { earned: {}, spoilers: true, demo: false };
-}
+  let earned = new Set();
+  let isDemo = false;
 
-function load() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    if (!parsed || typeof parsed !== 'object' || typeof parsed.earned !== 'object') return null;
-    return { ...blankState(), ...parsed };
-  } catch {
-    return null;
-  }
-}
-
-export function createTracker(trophies, { demo = false } = {}) {
-  let state = load();
-  if (!state) {
-    state = blankState();
-    if (demo) {
-      state.demo = true;
-      const wanted = new Set(DEMO_NS);
-      for (const t of trophies) if (wanted.has(t.n)) state.earned[t.id] = true;
+  function save() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify({ earned: [...earned], demo: isDemo }));
+    } catch (e) {
+      /* storage unavailable (private mode, file://) - progress just won't persist */
     }
-    persist();
   }
 
-  function persist() {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch { /* private mode: run in memory */ }
+  function load() {
+    let raw = null;
+    try {
+      raw = localStorage.getItem(KEY);
+    } catch (e) {
+      raw = null;
+    }
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed.earned)) {
+          earned = new Set(parsed.earned.filter((x) => typeof x === 'string'));
+          isDemo = parsed.demo === true;
+          return;
+        }
+      } catch (e) {
+        /* a corrupt save falls through to a fresh start */
+      }
+    }
+    if (new URLSearchParams(location.search).has('demo')) {
+      earned = new Set(DEMO_EARNED);
+      isDemo = true;
+      save();
+    }
   }
+
+  load();
 
   return {
-    isDemo: () => state.demo === true,
-    spoilers: () => state.spoilers !== false,
-    setSpoilers(value) { state.spoilers = !!value; persist(); },
-    isEarned: (id) => state.earned[id] === true,
+    get isDemo() {
+      return isDemo;
+    },
+    isEarned(id) {
+      return earned.has(id);
+    },
     toggle(id) {
-      if (state.earned[id]) delete state.earned[id];
-      else state.earned[id] = true;
-      persist();
-      return state.earned[id] === true;
+      if (earned.has(id)) earned.delete(id);
+      else earned.add(id);
+      save();
+      return earned.has(id);
     },
-    earnedCount: () => trophies.filter((t) => state.earned[t.id]).length,
-    gradeCounts() {
-      const out = {};
-      for (const t of trophies) {
-        out[t.grade] ??= { have: 0, total: 0 };
-        out[t.grade].total += 1;
-        if (state.earned[t.id]) out[t.grade].have += 1;
-      }
-      return out;
+    setEarned(id, value) {
+      if (value) earned.add(id);
+      else earned.delete(id);
+      save();
     },
-    kindCounts() {
-      const out = {};
-      for (const t of trophies) {
-        out[t.type] ??= { have: 0, total: 0 };
-        out[t.type].total += 1;
-        if (state.earned[t.id]) out[t.type].have += 1;
-      }
-      return out;
+    count() {
+      return earned.size;
     },
-    stepCounts(roadmap) {
-      const out = {};
-      for (const s of roadmap.steps) {
-        const ids = s.trophy_ids;
-        out[s.step] = { have: ids.filter((id) => state.earned[id]).length, total: ids.length };
-      }
-      return out;
+    ids() {
+      return [...earned];
     },
-    exportText() {
-      return JSON.stringify({ app: 'leonida-legend', version: 2, earned: Object.keys(state.earned).filter((id) => state.earned[id]) }, null, 1);
+    exportJson() {
+      return JSON.stringify(
+        { app: 'leonida-legend', version: 1, earned: [...earned].sort() },
+        null,
+        2,
+      );
     },
-    importText(text) {
+    importJson(text) {
       const parsed = JSON.parse(text);
       const list = Array.isArray(parsed) ? parsed : parsed.earned;
       if (!Array.isArray(list)) throw new Error('no earned list in that file');
-      const known = new Set(trophies.map((t) => t.id));
-      const next = {};
-      for (const id of list) if (known.has(id)) next[id] = true;
-      state.earned = next;
-      state.demo = false;
-      persist();
-      return Object.keys(next).length;
+      earned = new Set(list.filter((x) => typeof x === 'string'));
+      isDemo = false;
+      save();
+      return earned.size;
     },
   };
-}
+})();

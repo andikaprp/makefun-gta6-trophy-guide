@@ -1,118 +1,161 @@
-// Leonida Legend - gta6-trophy-guide-01 entry (Node 22, standard library only).
+// Leonida Legend - entrypoint for the gta6-trophy-guide-01 entry.
 //
-// The guide is this directory's app/ folder: plain static files, offline, no
-// build step. This program is the gatekeeper and the courier. Before handing
-// anything in it validates the data end to end - the trophy list against the
-// verified split, every trophy's structured guide against its status, and the
-// roadmap placing every trophy exactly once - and refuses malformed data with
-// the defect named (exit 2). Then it copies app/ and screenshots/ to the
-// output directory and writes dossier.json with the vendored make.fun library
-// (vendor/makefun-frontend.ts, byte-identical to the kit's copy - the scorer
-// requires dossier.json to be exactly what its own copy writes).
+// What this program does, in order:
+//   1. Reads app/data/trophies.json and app/data/roadmap.json and validates
+//      them hard (shape, the official 55, grade split, hidden count, every
+//      guide present and cited, the roadmap placing every trophy once).
+//      Any defect is named on stderr and the program exits 2 without
+//      handing anything in.
+//   2. Copies app/ and screenshots/ into the output directory
+//      (MAKEFUN_OUTPUT_DIR, standing in for /output outside the grader).
+//   3. Writes dossier.json into the output directory with buildDossier
+//      from the kit's vendor library, under this competition's caps, and
+//      refuses if the dossier would pass the 1.5 MiB competition limit.
 //
-//   MAKEFUN_OUTPUT_DIR=out node main.ts
-// Serve the app locally with `node serve.ts`.
+// The program is deterministic: same repository in, same bytes out.
 
-import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { cpSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-frontend.ts';
 
-const here = fileURLToPath(new URL('.', import.meta.url));
-const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+const GRADES = ['platinum', 'gold', 'silver', 'bronze'];
+const KINDS = ['story', 'activities', 'collectibles', 'completion', 'platinum'];
+const EXPECTED_SPLIT = { platinum: 1, gold: 2, silver: 6, bronze: 46 };
+const EXPECTED_COUNT = 55;
+const EXPECTED_HIDDEN = 28;
+const DOSSIER_LIMIT = 1572864; // 1.5 MiB, the competition's dossier cap
 
-function refuse(defect) {
-  console.error(`main.ts: refusing to hand in - ${defect}`);
+function fail(defect) {
+  console.error(`main.ts: refusing to hand in: ${defect}`);
   process.exit(2);
 }
 
-// ---------- validate the trophy data ----------
-const trophiesPath = join(here, 'app', 'data', 'trophies.json');
-const roadmapPath = join(here, 'app', 'data', 'roadmap.json');
-let trophiesDoc, roadmapDoc;
-try {
-  trophiesDoc = JSON.parse(readFileSync(trophiesPath, 'utf8'));
-  roadmapDoc = JSON.parse(readFileSync(roadmapPath, 'utf8'));
-} catch (err) {
-  refuse(`data files unreadable: ${err.message}`);
+function isBlank(value) {
+  return typeof value !== 'string' || value.trim() === '';
 }
 
-const trophies = trophiesDoc.trophies;
-if (!Array.isArray(trophies)) refuse('trophies.json has no trophies array');
-if (trophies.length !== 55) refuse(`trophies.json holds ${trophies.length} trophies, the official list has 55`);
-
-const GRADES = ['platinum', 'gold', 'silver', 'bronze'];
-const STATUSES = ['confirmed', 'unconfirmed', 'reading', 'watch'];
-const blank = (v) => typeof v !== 'string' || v.trim() === '';
-const ids = new Set();
-const split = {};
-let hiddenCount = 0;
-
-for (const t of trophies) {
-  const who = t && typeof t.name === 'string' ? t.name : '(unnamed trophy)';
-  if (!t || typeof t !== 'object') refuse('a trophy entry is not an object');
-  if (blank(t.id)) refuse(`${who}: id missing`);
-  if (ids.has(t.id)) refuse(`${who}: duplicate id ${t.id}`);
-  ids.add(t.id);
-  if (blank(t.name)) refuse('a trophy has no name');
-  if (blank(t.description)) refuse(`${who}: description missing`);
-  if (!GRADES.includes(t.grade)) refuse(`${who}: grade "${t.grade}" is not a trophy grade`);
-  split[t.grade] = (split[t.grade] ?? 0) + 1;
-  if (blank(t.type)) refuse(`${who}: kind (type) missing`);
-  if (typeof t.hidden !== 'boolean') refuse(`${who}: hidden flag missing`);
-  if (t.hidden) hiddenCount += 1;
-  if (typeof t.missable !== 'boolean') refuse(`${who}: missable flag missing`);
-  if (!Number.isInteger(t.roadmap_step) || t.roadmap_step < 1 || t.roadmap_step > 7) refuse(`${who}: roadmap_step is not 1-7`);
-  if (blank(t.guide)) refuse(`${who}: guide missing`);
-  if (!Array.isArray(t.sources) || t.sources.length === 0 || t.sources.some(blank)) refuse(`${who}: sources missing`);
-  if (!STATUSES.includes(t.status)) refuse(`${who}: status "${t.status}" is not a known status`);
-  if (!Array.isArray(t.steps) || t.steps.some((s) => typeof s !== 'string')) refuse(`${who}: steps is not a string array`);
-  if (blank(t.requirements)) refuse(`${who}: requirements missing`);
-  if (blank(t.effort)) refuse(`${who}: effort missing`);
-  if (t.status === 'confirmed' && t.steps.length < 2) refuse(`${who}: confirmed but carries fewer than 2 method steps`);
-  if ((t.status === 'unconfirmed' || t.status === 'reading') && (blank(t.reading) || blank(t.safe_habit) || blank(t.confirmation))) {
-    refuse(`${who}: ${t.status} but missing its reading / safe habit / confirmation treatment`);
+function validateTrophies(data) {
+  if (typeof data !== 'object' || data === null || !Array.isArray(data.trophies)) {
+    fail('trophies.json is not an object with a trophies array');
   }
-  if (t.status === 'watch' && (t.steps.length < 2 || blank(t.reading) || blank(t.safe_habit) || blank(t.confirmation))) {
-    refuse(`${who}: the missable watch needs both method steps and the three-part treatment`);
+  const trophies = data.trophies;
+  if (trophies.length !== EXPECTED_COUNT) {
+    fail(`trophies.json holds ${trophies.length} trophies, not ${EXPECTED_COUNT}`);
   }
-}
-const expectedSplit = { platinum: 1, gold: 2, silver: 6, bronze: 46 };
-for (const g of GRADES) {
-  if (split[g] !== expectedSplit[g]) refuse(`grade split is ${JSON.stringify(split)}, the official split is ${JSON.stringify(expectedSplit)}`);
-}
-if (hiddenCount !== 28) refuse(`${hiddenCount} hidden trophies, the official list has 28`);
-
-// ---------- validate the roadmap ----------
-const steps = roadmapDoc.steps;
-if (!Array.isArray(steps) || steps.length !== 7) refuse('roadmap.json does not hold exactly 7 steps');
-const placed = new Map();
-steps.forEach((s, i) => {
-  if (s.step !== i + 1) refuse(`roadmap step at position ${i} is numbered ${s.step}`);
-  if (blank(s.title) || blank(s.summary) || blank(s.effort)) refuse(`roadmap step ${s.step}: title, summary or effort missing`);
-  if (!Array.isArray(s.depends_on) || s.depends_on.some((d) => !Number.isInteger(d) || d < 1 || d >= s.step)) {
-    refuse(`roadmap step ${s.step}: depends_on must list earlier steps only`);
+  const ids = new Set();
+  const split = { platinum: 0, gold: 0, silver: 0, bronze: 0 };
+  let hidden = 0;
+  for (const t of trophies) {
+    if (typeof t !== 'object' || t === null) fail('a trophy entry is not an object');
+    if (isBlank(t.id)) fail('a trophy has no id');
+    if (ids.has(t.id)) fail(`duplicate trophy id ${t.id}`);
+    ids.add(t.id);
+    if (isBlank(t.name)) fail(`trophy ${t.id} has no name`);
+    if (isBlank(t.description)) fail(`trophy ${t.id} has no description`);
+    if (isBlank(t.guide)) fail(`trophy ${t.id} has no guide`);
+    if (!GRADES.includes(t.grade)) fail(`trophy ${t.id} has grade ${t.grade}`);
+    split[t.grade] += 1;
+    if (!KINDS.includes(t.type)) fail(`trophy ${t.id} has type ${t.type}`);
+    if (typeof t.hidden !== 'boolean') fail(`trophy ${t.id} hidden is not a boolean`);
+    if (t.hidden) hidden += 1;
+    if (typeof t.missable !== 'boolean') fail(`trophy ${t.id} missable is not a boolean`);
+    if (!Array.isArray(t.sources) || t.sources.length === 0 || t.sources.some(isBlank)) {
+      fail(`trophy ${t.id} does not name its sources`);
+    }
+    if (!t.guide.includes('Sources:')) fail(`trophy ${t.id} guide cites no source`);
+    if (!Array.isArray(t.steps)) fail(`trophy ${t.id} steps is not an array`);
+    if (t.status === 'unconfirmed' && t.steps.length !== 0) {
+      fail(`trophy ${t.id} is unconfirmed but carries steps - unconfirmed trophies state no method`);
+    }
+    if (t.status !== 'unconfirmed' && t.steps.length === 0) {
+      fail(`trophy ${t.id} has status ${t.status} but no steps`);
+    }
+    if (isBlank(t.requirements)) fail(`trophy ${t.id} has no requirements`);
+    if (isBlank(t.effort)) fail(`trophy ${t.id} has no effort estimate`);
+    if (isBlank(t.status)) fail(`trophy ${t.id} has no status`);
+    if (!Number.isInteger(t.roadmap_step) || t.roadmap_step < 1 || t.roadmap_step > 8) {
+      fail(`trophy ${t.id} has roadmap_step ${t.roadmap_step}`);
+    }
   }
-  if (!Array.isArray(s.trophy_ids) || s.trophy_ids.length === 0) refuse(`roadmap step ${s.step}: no trophies placed`);
-  for (const id of s.trophy_ids) {
-    if (!ids.has(id)) refuse(`roadmap step ${s.step}: unknown trophy id ${id}`);
-    if (placed.has(id)) refuse(`roadmap step ${s.step}: trophy ${id} is placed twice`);
-    placed.set(id, s.step);
+  for (const g of GRADES) {
+    if (split[g] !== EXPECTED_SPLIT[g]) {
+      fail(`grade split is wrong: ${g} is ${split[g]}, not ${EXPECTED_SPLIT[g]}`);
+    }
   }
-});
-if (placed.size !== trophies.length) refuse(`roadmap places ${placed.size} of ${trophies.length} trophies`);
-for (const t of trophies) {
-  if (placed.get(t.id) !== t.roadmap_step) refuse(`${t.name}: roadmap_step ${t.roadmap_step} disagrees with the roadmap (step ${placed.get(t.id)})`);
+  if (hidden !== EXPECTED_HIDDEN) {
+    fail(`hidden count is ${hidden}, not ${EXPECTED_HIDDEN}`);
+  }
+  return trophies;
 }
 
-// ---------- hand in ----------
-mkdirSync(out, { recursive: true });
-cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
-mkdirSync(join(out, 'screenshots'), { recursive: true });
-if (existsSync(join(here, 'screenshots'))) cpSync(join(here, 'screenshots'), join(out, 'screenshots'), { recursive: true });
+function validateRoadmap(data, trophies) {
+  if (typeof data !== 'object' || data === null || !Array.isArray(data.steps)) {
+    fail('roadmap.json is not an object with a steps array');
+  }
+  const steps = data.steps;
+  if (steps.length !== 8) fail(`roadmap.json holds ${steps.length} steps, not 8`);
+  const byId = new Map(trophies.map((t) => [t.id, t]));
+  const placed = new Set();
+  let ponrCount = 0;
+  steps.forEach((s, i) => {
+    if (s.step !== i + 1) fail(`roadmap step at position ${i} is numbered ${s.step}`);
+    if (isBlank(s.title) || isBlank(s.summary) || isBlank(s.effort)) {
+      fail(`roadmap step ${s.step} is missing title, summary or effort`);
+    }
+    if (!Array.isArray(s.depends_on)) fail(`roadmap step ${s.step} depends_on is not an array`);
+    for (const dep of s.depends_on) {
+      if (!Number.isInteger(dep) || dep < 1 || dep >= s.step) {
+        fail(`roadmap step ${s.step} depends on ${dep}, which is not an earlier step`);
+      }
+    }
+    if (s.point_of_no_return) {
+      ponrCount += 1;
+      if (s.step !== 1) fail(`roadmap step ${s.step} is flagged point of no return; only step 1 may be`);
+      if (isBlank(s.point_of_no_return_note)) fail('roadmap step 1 has no point-of-no-return note');
+    }
+    if (!Array.isArray(s.trophies) || s.trophies.length === 0) {
+      fail(`roadmap step ${s.step} places no trophies`);
+    }
+    for (const id of s.trophies) {
+      if (!byId.has(id)) fail(`roadmap step ${s.step} places unknown trophy ${id}`);
+      if (placed.has(id)) fail(`trophy ${id} is placed twice on the roadmap`);
+      placed.add(id);
+      if (byId.get(id).roadmap_step !== s.step) {
+        fail(`trophy ${id} says roadmap_step ${byId.get(id).roadmap_step} but sits in step ${s.step}`);
+      }
+    }
+  });
+  if (ponrCount !== 1) fail(`roadmap has ${ponrCount} point-of-no-return flags, not 1`);
+  if (placed.size !== EXPECTED_COUNT) {
+    fail(`roadmap places ${placed.size} trophies, not ${EXPECTED_COUNT}`);
+  }
+}
 
-writeFileSync(
-  join(out, 'dossier.json'),
-  buildDossier(out, { text_max_bytes: 163840, screenshots: { max: 4, max_bytes: 262144 }, app_max_files: 993, app_max_bytes: 50331648 }),
-);
-console.log(`main.ts: validated 55 trophies and a 7-step roadmap; handed in to ${out}`);
+function main() {
+  const botDir = process.env.MAKEFUN_BOT_DIR || dirname(fileURLToPath(import.meta.url));
+  const outDir = process.env.MAKEFUN_OUTPUT_DIR;
+  if (!outDir) fail('MAKEFUN_OUTPUT_DIR is not set');
+  const trophiesData = JSON.parse(readFileSync(join(botDir, 'app', 'data', 'trophies.json'), 'utf8'));
+  const roadmapData = JSON.parse(readFileSync(join(botDir, 'app', 'data', 'roadmap.json'), 'utf8'));
+  const trophies = validateTrophies(trophiesData);
+  validateRoadmap(roadmapData, trophies);
+  for (const part of ['app', 'screenshots']) {
+    if (!existsSync(join(botDir, part))) fail(`${part}/ is missing from the repository`);
+    cpSync(join(botDir, part), join(outDir, part), { recursive: true });
+  }
+  const dossier = buildDossier(botDir, {
+    text_max_bytes: 163840,
+    screenshots: { max: 4, max_bytes: 262144 },
+    app_max_files: 993,
+    app_max_bytes: 50331648,
+    app_path_max_bytes: 1000,
+  });
+  if (dossier.length > DOSSIER_LIMIT) {
+    fail(`dossier.json would be ${dossier.length} bytes, over the ${DOSSIER_LIMIT} cap`);
+  }
+  writeFileSync(join(outDir, 'dossier.json'), dossier);
+  console.log(`main.ts: validated 55 trophies and an 8-step roadmap; dossier.json ${dossier.length} bytes`);
+}
+
+main();
