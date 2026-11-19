@@ -1,87 +1,79 @@
 {
-  "title": "Roadmap to the platinum",
-  "note": "Eight steps in the order a first playthrough should meet them. Only one flag on the whole road is a point of no return: the meditation watch in step 1. Everything else can be cleaned up after the story.",
-  "steps": [
-    {
-      "step": 1,
-      "id": "touchdown-in-leonida",
-      "title": "Touchdown in Leonida",
-      "summary": "The opening hours: finish Chapter 1, take in Ocean Beach while you are there, and start the one habit this roadmap insists on - meditating at every spot the first time you reach it.",
-      "effort": "The opening chapter; a couple of hours",
-      "depends_on": [],
-      "point_of_no_return": true,
-      "point_of_no_return_note": "Positive Mental Attitude is the list's one missable watch: PowerPyx and U7Buy flag that a Chapter 1 meditation spot may not be reachable later. Meditate on arrival, every time, from the very first spot.",
-      "trophies": ["paradise-lost", "in-the-beginning", "positive-mental-attitude"]
-    },
-    {
-      "step": 2,
-      "id": "first-threads",
-      "title": "First threads",
-      "summary": "Chapter 2 and the first named missions, and the moment to open the stranger strands: Strangers & Freaks counts eight finished strands, so every strand started early is one less to chase at the end.",
-      "effort": "Early story plus the first side strands",
-      "depends_on": [1],
-      "point_of_no_return": false,
-      "trophies": ["just-like-paradise", "ts-ass-drug-money", "trust", "strangers-and-freaks"]
-    },
-    {
-      "step": 3,
-      "id": "the-middle-chapters",
-      "title": "The middle chapters",
-      "summary": "Chapters 3 and 4 with the missions that sit inside them. Keep meditating on arrival and keep the stranger strands moving between story beats.",
-      "effort": "The middle of the campaign",
-      "depends_on": [2],
-      "point_of_no_return": false,
-      "trophies": ["vice-city-baby", "family-matters", "dwnfall", "top-of-the-world-ma"]
-    },
-    {
-      "step": 4,
-      "id": "big-scores",
-      "title": "Big scores",
-      "summary": "The heist heart of the game: the Cartel Heist, the VCIA operation and Savage Glory in the story, and the free-roam scores - bank vaults, an armored truck and one clean jewelry job - while your crew and loadout are at their strongest.",
-      "effort": "Late-story missions plus five vaults and two roadside jobs",
-      "depends_on": [3],
-      "point_of_no_return": false,
-      "trophies": ["break-the-bank", "hi-jacked", "snow-storm", "sneakthief", "maximum-withdrawal", "a-classic-blitz-play"]
-    },
-    {
-      "step": 5,
-      "id": "loose-ends-for-friends",
-      "title": "Loose ends for friends",
-      "summary": "Close out the named strands: the final missions for Andy, Kenton, Billy, Randy and Tyrone, and Bret's unique-animal hunt. Each finale carries its own trophy and feeds the Strangers & Freaks count from step 2.",
-      "effort": "Six side arcs, each a few missions",
-      "depends_on": [3],
-      "point_of_no_return": false,
-      "trophies": ["road-to-rehabilitation", "this-was-no-boat-accident", "the-lone-rider", "supply-and-demand", "spin-on-this", "fair-game"]
-    },
-    {
-      "step": 6,
-      "id": "leonida-pastimes",
-      "title": "Leonida pastimes",
-      "summary": "The activity belt: ranges, races, stunts, fishing, bowling, partner trouble and gang work. Most of these open early and ripen slowly - sample everything for Master of None, then grind the counters (250 stunts, 20 race wins) a few at a time between missions.",
-      "effort": "Spread across the whole playthrough; the stunt counter is the long pole",
-      "depends_on": [2],
-      "point_of_no_return": false,
-      "trophies": ["cunning-stunts", "master-of-none", "the-shootist", "top-fun", "earn-cash-not-kudos", "baited-my-tackle", "stick-fiddler", "lets-go-bowling", "hot-together", "retail-therapy", "gunslinger", "catch-me-if-you-can", "challenging-tank", "pest-control", "ten-pin"]
-    },
-    {
-      "step": 7,
-      "id": "the-completionist-sweep",
-      "title": "The completionist sweep",
-      "summary": "The collectors' pass: card sets, 100 WAiNK locations, 100 vehicles, every corner of the map, the money totals and the garage keys - plus the four cryptic trophies whose covering habits (showroom exits, instant retries, staying for strange events, partner play) should already be second nature by now.",
-      "effort": "The longest step; mostly travel and tally-keeping",
-      "depends_on": [6],
-      "point_of_no_return": false,
-      "trophies": ["dont-touch-my-deck", "you-wainker", "one-last-thing", "whip-it-good", "the-goodtime-state", "dime-on-the-dollar", "treat-yo-self", "little-boxes", "on-the-spot", "capital-offense", "personal-best", "actions-speak-louder", "bad-luck-i-guess", "the-truth-is-out-there"]
-    },
-    {
-      "step": 8,
-      "id": "endgame-and-the-platinum",
-      "title": "Endgame and the platinum",
-      "summary": "Finish the final mission, close the last percentage points of the completion counter, and the platinum follows the 54th trophy on its own. If anything is still open, the tracker board is the checklist - nothing on this road is missable except the step 1 watch you have already kept.",
-      "effort": "The finale plus whatever the sweep left behind",
-      "depends_on": [4, 5, 7],
-      "point_of_no_return": false,
-      "trophies": ["you-gotta-know-when-to-get-off", "a-long-road", "vice-got-a-price"]
-    }
-  ]
+ "title": "Road to the Platinum - Leonida Legend",
+ "credits": "List data: Exophase (PSN), XCT.live (Xbox) and TrueAchievements - two platform pipelines in agreement. Missable watch per PowerPyx; unconfirmed statuses per Output Lag.",
+ "steps": [
+  {
+   "step": 1,
+   "title": "Touchdown in Leonida",
+   "summary": "The opening hours: the first mission, Chapter 1, an early errand - and the meditation watch starts here, because the spots tied to Chapter 1 may not wait for you.",
+   "effort": "The first few hours of the game",
+   "depends_on": [],
+   "point_of_no_return": true,
+   "ponr_note": "POINT OF NO RETURN (watch): meditate at every Chapter 1 meditation spot before the chapter closes. Positive Mental Attitude's missable status is under investigation per PowerPyx - treat the early spots as now-or-never and this step can never hurt you.",
+   "trophy_ids": [1, 2, 7, 27]
+  },
+  {
+   "step": 2,
+   "title": "The story deepens",
+   "summary": "Chapters 2 and 3 with the middle-chapter missions: the heist, the family business and the headlines. The plot's money engine starts here.",
+   "effort": "Several hours of story play",
+   "depends_on": [1],
+   "point_of_no_return": false,
+   "trophy_ids": [3, 4, 8, 9, 10]
+  },
+  {
+   "step": 3,
+   "title": "The endgame of the story",
+   "summary": "Chapter 4, the airport takedown, the last big operation and the final mission itself. Finish the campaign; free roam continues afterwards, so nothing else in this roadmap locks.",
+   "effort": "The campaign's finishing stretch",
+   "depends_on": [2],
+   "point_of_no_return": false,
+   "trophy_ids": [5, 6, 11, 12]
+  },
+  {
+   "step": 4,
+   "title": "Friends and strangers",
+   "summary": "The named strands: Andy, Kenton, Billy, Randy, Tyrone and Bret's hunt. Finish strands rather than opening them all - eight completed strands bank the silver, and five of these carry trophies of their own.",
+   "effort": "Several hours of side stories",
+   "depends_on": [1],
+   "point_of_no_return": false,
+   "trophy_ids": [21, 22, 23, 24, 25, 26, 28]
+  },
+  {
+   "step": 5,
+   "title": "Leonida at play",
+   "summary": "The activity layer: stunts, ranges, races, drones, fishing, arcades and challenges. Start with Master of None - one try at each of the 9 activity types - and let the counters build from there.",
+   "effort": "A few evenings of activities",
+   "depends_on": [1],
+   "point_of_no_return": false,
+   "trophy_ids": [14, 15, 16, 17, 18, 19, 20, 31]
+  },
+  {
+   "step": 6,
+   "title": "Partners in crime",
+   "summary": "The robbery and free-roam feat layer: partner escapes, shop chains, vaults, trucks, gang operations - and the money economy (laundering and spending) that funds the endgame purchases.",
+   "effort": "An evening or two of planned crime",
+   "depends_on": [2],
+   "point_of_no_return": false,
+   "trophy_ids": [32, 33, 35, 36, 38, 39, 40, 42, 51, 52]
+  },
+  {
+   "step": 7,
+   "title": "The sweep",
+   "summary": "Collectibles and coverage: card sets, WAiNK locations, vehicle discoveries and registrations, every area of the map, and all 8 garage properties once step 6 has made you rich.",
+   "effort": "A long, pleasant tour of the state",
+   "depends_on": [3, 6],
+   "point_of_no_return": false,
+   "trophy_ids": [29, 30, 34, 41, 53, 54]
+  },
+  {
+   "step": 8,
+   "title": "The last mysteries, then the Legend",
+   "summary": "The honest tail: six unconfirmed trophies and three description-led ones, handled with readings and play-it-safe habits rather than invented steps - then the 100% gold and the platinum it unlocks.",
+   "effort": "The tail of a completion playthrough",
+   "depends_on": [7],
+   "point_of_no_return": false,
+   "trophy_ids": [43, 44, 45, 46, 47, 48, 49, 50, 37, 13, 55]
+  }
+ ]
 }

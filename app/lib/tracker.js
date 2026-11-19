@@ -1,110 +1,38 @@
-// Leonida Legend - progress tracker.
-// Earned state lives in localStorage on this device only. Nothing is sent
-// anywhere. Export downloads a small JSON file; import reads one back.
-//
-// Demo mode: opening the app with ?demo=1 and no saved progress seeds an
-// honest sample (14 of 55 earned, all plausible early-game trophies) so
-// screenshots and first visits show the tracker mid-journey. The sample
-// is labelled as a sample wherever it matters.
+// Progress tracker: earned state in localStorage, demo seeding, export/import.
+const KEY = 'leonida-legend-progress-v1';
 
-const Tracker = (() => {
-  const KEY = 'leonida-legend.progress.v1';
+// The honest demo sample used for screenshots: 14 of 55 earned - the story
+// through Chapter 3, a strand finished, a few activities. No unconfirmed
+// trophy is in the earned set, and neither is the missable watch.
+export const DEMO_EARNED = [1, 2, 7, 3, 8, 9, 4, 15, 16, 19, 20, 24, 32, 35];
 
-  const DEMO_EARNED = [
-    'paradise-lost',
-    'one-last-thing',
-    'trust',
-    'just-like-paradise',
-    'ts-ass-drug-money',
-    'master-of-none',
-    'stick-fiddler',
-    'baited-my-tackle',
-    'the-shootist',
-    'whip-it-good',
-    'gunslinger',
-    'catch-me-if-you-can',
-    'vice-city-baby',
-    'family-matters',
-  ];
+export function isDemo() {
+  return new URLSearchParams(location.search).has('demo');
+}
 
-  let earned = new Set();
-  let isDemo = false;
+export function loadEarned() {
+  if (isDemo()) return new Set(DEMO_EARNED);
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (raw) return new Set(JSON.parse(raw));
+  } catch { /* storage unavailable - run session-only */ }
+  return new Set();
+}
 
-  function save() {
-    try {
-      localStorage.setItem(KEY, JSON.stringify({ earned: [...earned], demo: isDemo }));
-    } catch (e) {
-      /* storage unavailable (private mode, file://) - progress just won't persist */
-    }
-  }
+export function saveEarned(earned) {
+  if (isDemo()) return;
+  try {
+    localStorage.setItem(KEY, JSON.stringify([...earned]));
+  } catch { /* session-only */ }
+}
 
-  function load() {
-    let raw = null;
-    try {
-      raw = localStorage.getItem(KEY);
-    } catch (e) {
-      raw = null;
-    }
-    if (raw) {
-      try {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed.earned)) {
-          earned = new Set(parsed.earned.filter((x) => typeof x === 'string'));
-          isDemo = parsed.demo === true;
-          return;
-        }
-      } catch (e) {
-        /* a corrupt save falls through to a fresh start */
-      }
-    }
-    if (new URLSearchParams(location.search).has('demo')) {
-      earned = new Set(DEMO_EARNED);
-      isDemo = true;
-      save();
-    }
-  }
+export function exportProgress(earned) {
+  return JSON.stringify({ app: 'leonida-legend', earned: [...earned].sort((a, b) => a - b) });
+}
 
-  load();
-
-  return {
-    get isDemo() {
-      return isDemo;
-    },
-    isEarned(id) {
-      return earned.has(id);
-    },
-    toggle(id) {
-      if (earned.has(id)) earned.delete(id);
-      else earned.add(id);
-      save();
-      return earned.has(id);
-    },
-    setEarned(id, value) {
-      if (value) earned.add(id);
-      else earned.delete(id);
-      save();
-    },
-    count() {
-      return earned.size;
-    },
-    ids() {
-      return [...earned];
-    },
-    exportJson() {
-      return JSON.stringify(
-        { app: 'leonida-legend', version: 1, earned: [...earned].sort() },
-        null,
-        2,
-      );
-    },
-    importJson(text) {
-      const parsed = JSON.parse(text);
-      const list = Array.isArray(parsed) ? parsed : parsed.earned;
-      if (!Array.isArray(list)) throw new Error('no earned list in that file');
-      earned = new Set(list.filter((x) => typeof x === 'string'));
-      isDemo = false;
-      save();
-      return earned.size;
-    },
-  };
-})();
+export function importProgress(text) {
+  const data = JSON.parse(text);
+  const list = Array.isArray(data) ? data : data.earned;
+  if (!Array.isArray(list)) throw new Error('no earned list in that file');
+  return new Set(list.filter((n) => Number.isInteger(n)));
+}
