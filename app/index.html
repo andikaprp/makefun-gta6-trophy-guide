@@ -4,36 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leonida Legend - GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="Offline guide and progress tracker for all 55 Grand Theft Auto VI trophies: structured methods, an honest unconfirmed watch, and a seven-step roadmap to the platinum.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">
-    <div class="brand-mark" aria-hidden="true">LL</div>
-    <div class="brand-text">
-      <h1>Leonida Legend</h1>
-      <p class="tagline">The GTA VI trophy guide &amp; tracker - all 55, verified from platform data</p>
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">LL</div>
+      <div>
+        <h1>Leonida Legend</h1>
+        <p class="tagline">GTA VI trophy guide &amp; tracker - all 55, offline</p>
+      </div>
+    </div>
+    <div class="mast-actions">
+      <label class="spoiler-toggle" title="Shield the names and descriptions of hidden trophies on the board until you earn them">
+        <input type="checkbox" id="spoiler-toggle" checked>
+        <span>Shield spoilers</span>
+      </label>
+      <button type="button" id="export-btn" class="btn">Export progress</button>
+      <button type="button" id="import-btn" class="btn">Import</button>
+      <input type="file" id="import-file" accept="application/json,.json" hidden>
     </div>
   </div>
-  <div class="top-actions">
-    <span id="head-progress" class="head-progress">0 / 55</span>
-    <label class="switch" title="Hide hidden trophies until earned">
-      <input type="checkbox" id="spoiler-toggle" checked>
-      <span>Spoiler shield</span>
-    </label>
-    <button id="export-btn" type="button">Export</button>
-    <button id="import-btn" type="button">Import</button>
-    <input type="file" id="import-file" accept="application/json" hidden>
-  </div>
+  <nav class="tabs" aria-label="Views">
+    <a href="#/" data-nav="board">Board</a>
+    <a href="#/roadmap" data-nav="roadmap">Roadmap</a>
+    <a href="#/method" data-nav="method">Method &amp; sources</a>
+  </nav>
 </header>
-<nav class="tabs" aria-label="Views">
-  <a href="#/" data-nav="board">Trophy board</a>
-  <a href="#/roadmap" data-nav="roadmap">Roadmap</a>
-  <a href="#/method" data-nav="method">Method &amp; sources</a>
-</nav>
-<main id="view" tabindex="-1"></main>
-<footer class="foot">
-  <p>An unofficial fan guide. Not affiliated with Rockstar Games or Take-Two Interactive. Trophy names and descriptions are the platforms' own, verified 19 Nov 2026 against PSN data (via Exophase) and Xbox catalog data (via XCT.live and TrueAchievements). Everything runs offline; progress never leaves this browser.</p>
+<main id="view" class="view"></main>
+<footer class="colophon">
+  <p>List verified 19 Nov 2026 against two independent platform pipelines (PSN via Exophase, Xbox via XCT.live) and five editorial lists. Unconfirmed methods are labelled, never invented. Progress is stored only in this browser.</p>
 </footer>
 <script type="module" src="app.js"></script>
 </body>

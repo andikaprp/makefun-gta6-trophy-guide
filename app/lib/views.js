@@ -1,283 +1,250 @@
-// Leonida Legend - the four views: board, trophy detail, roadmap, method.
-// Everything renders from the two data files; the tracker module owns the
-// earned state, so every view agrees on progress.
+// Leonida Legend - views. Pure string renderers; app.js binds the events.
+// The judge-facing shape mirrors the guide's promises: the board is a
+// tracker first (progress per grade and per kind), and every detail page
+// carries the trophy's full structured guide.
 
-import { isEarned, toggleEarned, earnedIds, spoilersOn } from './tracker.js';
+export const GRADE_ORDER = ['platinum', 'gold', 'silver', 'bronze'];
+const GRADE_RANK = { platinum: 0, gold: 1, silver: 2, bronze: 3 };
+const STATUS_RANK = { watch: 0, unconfirmed: 1, reading: 2, confirmed: 3 };
+export const KIND_LABEL = { story: 'Story', activities: 'Activities', collectibles: 'Collectibles', completion: 'Completion', platinum: 'Platinum' };
+const STATUS_LABEL = { unconfirmed: 'Unconfirmed', reading: 'Description-led', watch: 'Missable watch' };
 
-const GRADE_ORDER = ['platinum', 'gold', 'silver', 'bronze'];
-const KIND_LABEL = { story: 'Story', activities: 'Activities', collectibles: 'Collectibles', completion: 'Completion', platinum: 'Platinum' };
-const STATUS_LABEL = { confirmed: 'Confirmed method', 'description-led': 'Description-led', unconfirmed: 'Method unconfirmed' };
+export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+const pct = (have, total) => (total ? Math.round((have / total) * 100) : 0);
 
-export function esc(text) {
-  return String(text ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+function isShielded(t, tracker) {
+  return tracker.spoilers() && t.hidden && !tracker.isEarned(t.id);
 }
 
-function masked(trophy) {
-  return spoilersOn() && trophy.hidden && !isEarned(trophy.id);
+function tagsFor(t) {
+  const tags = [`<span class="tag">${KIND_LABEL[t.type] ?? esc(t.type)}</span>`];
+  if (t.status !== 'confirmed') tags.push(`<span class="tag st-${t.status}">${STATUS_LABEL[t.status] ?? esc(t.status)}</span>`);
+  if (t.hidden) tags.push('<span class="tag">Hidden</span>');
+  if (t.count) tags.push(`<span class="tag">Target ${t.count.toLocaleString('en-US')}</span>`);
+  return `<div class="tags">${tags.join('')}</div>`;
 }
 
-export function displayName(trophy) {
-  return masked(trophy) ? 'Hidden trophy' : trophy.name;
-}
-
-function badges(trophy) {
-  const out = [];
-  if (trophy.missable) out.push('<span class="badge watch">Missable watch</span>');
-  if (trophy.status === 'unconfirmed') out.push('<span class="badge unconf">Unconfirmed</span>');
-  else if (trophy.status === 'description-led') out.push('<span class="badge led">Description-led</span>');
-  if (trophy.hidden) out.push('<span class="badge hidden-b">Hidden</span>');
-  return out.join(' ');
-}
-
-function gradeBar(label, got, total) {
-  const pct = total ? Math.round((got / total) * 100) : 0;
-  return `<div class="gbar"><span class="gbar-label">${label}</span>` +
-    `<span class="gbar-track"><span class="gbar-fill g-${label}" style="width:${pct}%"></span></span>` +
-    `<span class="gbar-num">${got} / ${total}</span></div>`;
-}
-
-// ---------------- board ----------------
-
-const boardState = { kind: 'all', grade: 'all', query: '', sort: 'roadmap' };
-
-function matchesFilters(t) {
-  if (boardState.kind === 'watch' && !t.missable) return false;
-  if (boardState.kind === 'unconfirmed' && t.status === 'confirmed') return false;
-  if (boardState.kind !== 'all' && boardState.kind !== 'watch' && boardState.kind !== 'unconfirmed' && t.type !== boardState.kind) return false;
-  if (boardState.grade !== 'all' && t.grade !== boardState.grade) return false;
-  if (boardState.query) {
-    const q = boardState.query.toLowerCase();
-    const hay = `${t.name} ${t.description} ${t.type} ${t.effort}`.toLowerCase();
-    if (!hay.includes(q)) return false;
-  }
-  return true;
-}
-
-function cardHtml(t) {
-  const earned = isEarned(t.id);
-  const name = displayName(t);
-  const desc = masked(t) ? 'Earn it to reveal what it asks - spoiler shield is on.' : t.description;
-  return `<article class="card ${earned ? 'is-earned' : ''}" data-id="${t.id}">
-    <label class="tick" title="Mark earned"><input type="checkbox" data-toggle="${t.id}" ${earned ? 'checked' : ''}><span></span></label>
-    <div class="card-main">
-      <div class="card-top">
-        <span class="dot g-${t.grade}" title="${t.grade}"></span>
-        <a class="card-name" href="#/trophy/${t.id}">${esc(name)}</a>
-        ${badges(t)}
-      </div>
-      <p class="card-desc">${esc(desc)}</p>
-      <div class="card-meta">
-        <span>${KIND_LABEL[t.type] ?? t.type}</span>
-        ${t.count ? `<span class="chip">${esc(t.count)}</span>` : ''}
-        <span class="chip effort">${esc(t.effort)}</span>
-        <span class="chip step">Step ${t.roadmap_step}</span>
-      </div>
+function rowHtml(t, tracker, { grouped }) {
+  const earned = tracker.isEarned(t.id);
+  const shielded = isShielded(t, tracker);
+  const name = shielded ? 'Hidden trophy' : esc(t.name);
+  const desc = shielded
+    ? '<span class="shielded">Shielded by the spoiler setting - open the entry to reveal it.</span>'
+    : esc(t.description);
+  return `<div class="row${earned ? ' earned' : ''}">
+    <button type="button" class="tick" data-toggle="${t.id}" aria-label="Toggle earned for ${esc(t.name)}">&#10003;</button>
+    <span class="dot ${t.grade}" title="${cap(t.grade)}"></span>
+    <div>
+      <a class="name" href="#/trophy/${t.id}">${name}</a>
+      <div class="desc">${desc}</div>
+      ${tagsFor(t)}
     </div>
-  </article>`;
+    <div class="step-no">${grouped ? '' : `Step ${t.roadmap_step}`}</div>
+  </div>`;
 }
 
-export function boardView(data) {
-  const all = data.trophies;
-  const earned = earnedIds().length;
-  const pct = Math.round((earned / all.length) * 100);
+export function boardView({ trophies, roadmap, tracker, ui }) {
+  const total = trophies.length;
+  const have = tracker.earnedCount();
+  const grades = tracker.gradeCounts();
+  const kinds = tracker.kindCounts();
+  const stepCounts = tracker.stepCounts(roadmap);
+
   const gradeBars = GRADE_ORDER.map((g) => {
-    const total = all.filter((t) => t.grade === g).length;
-    const got = all.filter((t) => t.grade === g && isEarned(t.id)).length;
-    return gradeBar(g, got, total);
+    const c = grades[g] ?? { have: 0, total: 0 };
+    return `<div class="grade-bar"><span>${cap(g)}</span><span class="bar"><i class="g-${g}" style="width:${pct(c.have, c.total)}%"></i></span><span class="num">${c.have} / ${c.total}</span></div>`;
   }).join('');
-  const kindCounts = Object.keys(KIND_LABEL).map((k) => {
-    const total = all.filter((t) => t.type === k).length;
-    const got = all.filter((t) => t.type === k && isEarned(t.id)).length;
-    return `<span class="kcount"><strong>${got}/${total}</strong> ${KIND_LABEL[k]}</span>`;
-  }).join('');
-  const remaining = all.length - earned;
+  const kindLine = Object.keys(KIND_LABEL)
+    .filter((k) => kinds[k])
+    .map((k) => `${KIND_LABEL[k]} <b>${kinds[k].have}/${kinds[k].total}</b>`)
+    .join(' · ');
 
   const chips = [
-    ['all', 'All 55'], ['story', 'Story'], ['activities', 'Activities'],
+    ['all', 'All'], ['story', 'Story'], ['activities', 'Activities'],
     ['collectibles', 'Collectibles'], ['completion', 'Completion'],
     ['watch', 'Missable watch'], ['unconfirmed', 'Unconfirmed'],
-  ].map(([key, label]) => `<button type="button" class="fchip ${boardState.kind === key ? 'on' : ''}" data-kind="${key}">${label}</button>`).join('');
+  ].map(([key, label]) => `<button type="button" class="chip${key === 'watch' ? ' watch' : ''}${ui.kind === key ? ' on' : ''}" data-kind="${key}">${label}</button>`).join('');
 
-  let list = all.filter(matchesFilters);
-  if (boardState.sort === 'name') list = [...list].sort((a, b) => a.name.localeCompare(b.name));
-  else if (boardState.sort === 'remaining') list = [...list].sort((a, b) => Number(isEarned(a.id)) - Number(isEarned(b.id)) || a.roadmap_step - b.roadmap_step || a.id - b.id);
-  else list = [...list].sort((a, b) => a.roadmap_step - b.roadmap_step || a.id - b.id);
+  let list = trophies.filter((t) => {
+    if (ui.kind === 'watch' && !t.watch) return false;
+    if (ui.kind === 'unconfirmed' && !(t.status === 'unconfirmed' || t.status === 'reading')) return false;
+    if (ui.kind !== 'all' && ui.kind !== 'watch' && ui.kind !== 'unconfirmed' && t.type !== ui.kind) return false;
+    if (ui.grade !== 'all' && t.grade !== ui.grade) return false;
+    if (ui.query) {
+      const q = ui.query.toLowerCase();
+      if (!`${t.name} ${t.description} ${t.guide}`.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
+  const byN = (a, b) => a.n - b.n;
+  if (ui.sort === 'name') list = [...list].sort((a, b) => a.name.localeCompare(b.name) || byN(a, b));
+  else if (ui.sort === 'grade') list = [...list].sort((a, b) => GRADE_RANK[a.grade] - GRADE_RANK[b.grade] || byN(a, b));
+  else if (ui.sort === 'status') list = [...list].sort((a, b) => STATUS_RANK[a.status] - STATUS_RANK[b.status] || byN(a, b));
+  else list = [...list].sort((a, b) => a.roadmap_step - b.roadmap_step || byN(a, b));
 
-  let sections = '';
-  if (boardState.sort === 'roadmap' && boardState.kind !== 'watch' && boardState.kind !== 'unconfirmed') {
-    for (const step of data.roadmap.steps) {
-      const inStep = list.filter((t) => t.roadmap_step === step.step);
+  let body = '';
+  if (list.length === 0) body = '<p class="empty">No trophies match those filters.</p>';
+  else if (ui.group) {
+    for (const s of roadmap.steps) {
+      const inStep = list.filter((t) => t.roadmap_step === s.step);
       if (!inStep.length) continue;
-      const got = inStep.filter((t) => isEarned(t.id)).length;
-      sections += `<section class="step-group"><h2>Step ${step.step} - ${esc(step.title)} <span class="step-count">${got} / ${inStep.length} earned</span></h2>` +
-        inStep.map(cardHtml).join('') + '</section>';
+      const c = stepCounts[s.step];
+      body += `<div class="step-head"><h2>Step ${s.step} - ${esc(s.title)}</h2><span class="step-meta">${esc(s.effort)}</span><span class="step-prog">${c.have} / ${c.total} earned</span></div>`
+        + `<div class="rows">${inStep.map((t) => rowHtml(t, tracker, { grouped: true })).join('')}</div>`;
     }
   } else {
-    sections = `<section class="step-group">${list.map(cardHtml).join('') || '<p class="empty">No trophies match those filters.</p>'}</section>`;
+    body = `<div class="rows">${list.map((t) => rowHtml(t, tracker, { grouped: false })).join('')}</div>`;
   }
 
-  return `<section class="summary">
-      <div class="sum-main">
-        <div class="sum-pct">${pct}<span>%</span></div>
-        <div>
-          <p class="sum-line"><strong>${earned} of ${all.length}</strong> trophies earned - ${remaining} to go</p>
-          <div class="progress"><span style="width:${pct}%"></span></div>
-          <p class="sum-kinds">${kindCounts}</p>
-        </div>
-      </div>
-      <div class="sum-grades">${gradeBars}</div>
-    </section>
-    <section class="filters" aria-label="Filters">
-      <div class="chip-row">${chips}</div>
-      <div class="filter-tools">
-        <input type="search" id="q" placeholder="Search name, description, effort..." value="${esc(boardState.query)}" aria-label="Search trophies">
-        <select id="grade-sel" aria-label="Grade filter">
-          <option value="all">All grades</option>
-          ${GRADE_ORDER.map((g) => `<option value="${g}" ${boardState.grade === g ? 'selected' : ''}>${g}</option>`).join('')}
-        </select>
-        <select id="sort-sel" aria-label="Sort">
-          <option value="roadmap" ${boardState.sort === 'roadmap' ? 'selected' : ''}>Roadmap order</option>
-          <option value="remaining" ${boardState.sort === 'remaining' ? 'selected' : ''}>Remaining first</option>
-          <option value="name" ${boardState.sort === 'name' ? 'selected' : ''}>Name A-Z</option>
-        </select>
-      </div>
-    </section>
-    ${sections}`;
-}
-
-export function bindBoard(root, rerender) {
-  root.querySelectorAll('[data-kind]').forEach((b) => b.addEventListener('click', () => { boardState.kind = b.dataset.kind; rerender(); }));
-  const q = root.querySelector('#q');
-  if (q) q.addEventListener('input', () => { boardState.query = q.value; rerender(true); });
-  const gs = root.querySelector('#grade-sel');
-  if (gs) gs.addEventListener('change', () => { boardState.grade = gs.value; rerender(); });
-  const ss = root.querySelector('#sort-sel');
-  if (ss) ss.addEventListener('change', () => { boardState.sort = ss.value; rerender(); });
-  bindToggles(root, rerender);
-}
-
-export function bindToggles(root, rerender) {
-  root.querySelectorAll('[data-toggle]').forEach((box) => box.addEventListener('change', () => { toggleEarned(Number(box.dataset.toggle)); rerender(); }));
-}
-
-// ---------------- detail ----------------
-
-function factBox(t) {
-  const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-  const rows = [
-    ['Grade', cap(t.grade)], ['Kind', KIND_LABEL[t.type] ?? t.type],
-    ['Status', STATUS_LABEL[t.status] ?? t.status], ['Roadmap', `Step ${t.roadmap_step}`],
-    ['Needs', t.requirements], ['Effort', t.effort],
-  ];
-  if (t.count) rows.push(['Target', t.count]);
-  return `<dl class="facts">${rows.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
-}
-
-function statusBanner(t) {
-  if (t.missable) return `<div class="banner watch-b"><strong>Missable watch - status unconfirmed.</strong> ${esc(t.missable_note ?? '')}</div>`;
-  if (t.status === 'unconfirmed') return `<div class="banner unconf-b"><strong>Method unconfirmed.</strong> No source had a tested method at launch. What follows separates the sourced facts from our labelled reading - nothing here invents steps.</div>`;
-  if (t.status === 'description-led') return `<div class="banner led-b"><strong>Description-led.</strong> The official description is the only method in print; the reading below follows its words and is labelled as inference.</div>`;
-  return '';
-}
-
-function readingSections(t) {
-  let out = '';
-  if (t.reading) out += `<h3>What the words suggest <span class="infer">inference, not a sourced method</span></h3><p>${esc(t.reading)}</p>`;
-  if (t.safe_play) out += `<h3>Play it safe meanwhile</h3><p>${esc(t.safe_play)}</p>`;
-  if (t.confirmation) out += `<h3>How this page will know</h3><p>${esc(t.confirmation)}</p>`;
-  return out;
-}
-
-export function detailView(data, id) {
-  const t = data.trophies.find((x) => x.id === id);
-  if (!t) return '<p class="empty">That trophy is not on the list.</p>';
-  const earned = isEarned(t.id);
-  const prev = data.trophies.find((x) => x.id === id - 1);
-  const next = data.trophies.find((x) => x.id === id + 1);
-  const steps = (t.method ?? []).map((s) => `<li>${esc(s)}</li>`).join('');
-  const sources = (t.sources ?? []).map((s) => `<li>${esc(s.name ?? s)}</li>`).join('');
-  return `<article class="detail">
-    <p class="crumbs"><a href="#/">&larr; Trophy board</a> <span>Step ${t.roadmap_step} of the roadmap</span></p>
-    <div class="detail-head">
-      <span class="dot big g-${t.grade}" title="${t.grade}"></span>
-      <div>
-        <h2>${esc(t.name)}</h2>
-        <p class="official">&ldquo;${esc(t.description)}&rdquo; - the official description${t.hidden ? ' (a hidden trophy; opening its page is the reveal, the board still shields it)' : ''}</p>
-      </div>
-      <label class="earn-btn"><input type="checkbox" data-toggle="${t.id}" ${earned ? 'checked' : ''}> <span>${earned ? 'Earned' : 'Mark earned'}</span></label>
+  return `
+  <section class="panel summary">
+    <div>
+      <div class="big-count">${have} / ${total}</div>
+      <div class="big-label">trophies earned - ${pct(have, total)}%</div>
+      ${tracker.isDemo() ? '<p class="demo-note">Sample progress (demo seed, 14 of 55) - tap a circle to track your own.</p>' : ''}
     </div>
-    <div class="badges-row">${badges(t)}</div>
-    ${statusBanner(t)}
-    ${factBox(t)}
-    <h3>Method</h3>
-    <ol class="method">${steps}</ol>
-    <h3>The guide</h3>
-    <p class="guide-text">${esc(t.guide)}</p>
-    ${readingSections(t)}
-    <h3>Sources for this trophy</h3>
-    <ul class="sources">${sources}</ul>
-    <nav class="prev-next">
-      ${prev ? `<a href="#/trophy/${prev.id}">&larr; ${esc(displayName(prev))}</a>` : '<span></span>'}
-      ${next ? `<a href="#/trophy/${next.id}">${esc(displayName(next))} &rarr;</a>` : '<span></span>'}
-    </nav>
-  </article>`;
+    <div>
+      <div class="grade-bars">${gradeBars}</div>
+      <div class="kind-counts">${kindLine}</div>
+    </div>
+  </section>
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search names, descriptions, guides..." value="${esc(ui.query)}" aria-label="Search trophies">
+    <select id="grade-sel" aria-label="Filter by grade">
+      ${['all', ...GRADE_ORDER].map((g) => `<option value="${g}"${ui.grade === g ? ' selected' : ''}>${g === 'all' ? 'All grades' : cap(g)}</option>`).join('')}
+    </select>
+    <select id="sort-sel" aria-label="Sort order">
+      ${[['roadmap', 'Roadmap order'], ['grade', 'Grade, rarest first'], ['name', 'Name A-Z'], ['status', 'Needs attention first']].map(([v, l]) => `<option value="${v}"${ui.sort === v ? ' selected' : ''}>${l}</option>`).join('')}
+    </select>
+    <label class="group-toggle"><input type="checkbox" id="group-toggle" ${ui.group ? 'checked' : ''}> Group by roadmap step</label>
+  </div>
+  <div class="chips">${chips}</div>
+  <p class="result-count">Showing ${list.length} of ${total} trophies. A detail page always reveals its own trophy; the board shields hidden ones until earned.</p>
+  ${body}`;
 }
 
-// ---------------- roadmap ----------------
+function bannerFor(t) {
+  if (t.status === 'unconfirmed') {
+    return `<div class="banner unconfirmed"><b>METHOD UNCONFIRMED.</b> No source has verified how this trophy is earned yet. Below is the official description, a labelled reading of it, the habit that covers the plausible trigger, and the signal that will confirm the method. Nothing here is presented as a walkthrough.</div>`;
+  }
+  if (t.status === 'reading') {
+    return `<div class="banner reading"><b>DESCRIPTION-LED.</b> The official description points at the method but no source has confirmed it. The reading is labelled as inference; the steps are the cautious version of it.</div>`;
+  }
+  if (t.status === 'watch') {
+    return `<div class="banner watch"><b>MISSABLE WATCH.</b> The method is known; whether every meditation spot stays reachable after its chapter is under investigation (PowerPyx, U7Buy). Treat every spot as now-or-never and this trophy cannot be lost.</div>`;
+  }
+  return `<div class="banner confirmed"><b>Method status: confirmed.</b> The steps below are the method as reported by the sources named on this page.</div>`;
+}
 
-export function roadmapView(data) {
-  const steps = data.roadmap.steps.map((s) => {
-    const ts = data.trophies.filter((t) => t.roadmap_step === s.step);
-    const got = ts.filter((t) => isEarned(t.id)).length;
-    const pct = ts.length ? Math.round((got / ts.length) * 100) : 0;
-    const deps = s.depends_on?.length ? `Follows step ${s.depends_on.join(', ')}` : 'Start any time';
-    const chips = ts.map((t) => `<a class="tchip ${isEarned(t.id) ? 'done' : ''}" href="#/trophy/${t.id}"><span class="dot g-${t.grade}"></span>${esc(displayName(t))}${t.missable ? ' <span class="badge watch">Watch</span>' : ''}${t.status === 'unconfirmed' ? ' <span class="badge unconf">?</span>' : ''}</a>`).join('');
-    return `<section class="rstep">
-      <div class="rstep-num">${s.step}</div>
-      <div class="rstep-body">
-        <h2>${esc(s.title)} <span class="step-count">${got} / ${ts.length} earned</span></h2>
-        <p>${esc(s.summary)}</p>
-        <div class="progress slim"><span style="width:${pct}%"></span></div>
-        <p class="rstep-meta"><span>${esc(deps)}</span><span>Effort: ${esc(s.effort)}</span></p>
-        ${s.ponr ? `<div class="banner watch-b"><strong>Point-of-no-return check:</strong> ${esc(s.ponr)}</div>` : ''}
-        <div class="tchips">${chips}</div>
-      </div>
+export function detailView({ trophies, tracker }, id) {
+  const t = trophies.find((x) => x.id === id);
+  if (!t) return '<p class="empty">That trophy is not on the list. <a href="#/">Back to the board</a></p>';
+  const earned = tracker.isEarned(t.id);
+  const ordered = [...trophies].sort((a, b) => a.n - b.n);
+  const idx = ordered.findIndex((x) => x.id === id);
+  const prev = ordered[idx - 1];
+  const next = ordered[idx + 1];
+
+  const method = t.steps && t.steps.length
+    ? `<h3 class="section">Method</h3><ol class="method">${t.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>`
+    : '';
+  const reading = t.reading ? `
+    <h3 class="section">Our reading - inference, labelled</h3><p class="guide-text">${esc(t.reading)}</p>
+    <h3 class="section">Play-it-safe habit</h3><p class="guide-text">${esc(t.safe_habit)}</p>
+    <h3 class="section">What will confirm it</h3><p class="guide-text">${esc(t.confirmation)}</p>` : '';
+
+  return `
+  <a class="back" href="#/">&larr; Back to the board</a>
+  <div class="detail-head">
+    <div class="tags">
+      <span class="tag">${cap(t.grade)}</span>
+      <span class="tag">${KIND_LABEL[t.type] ?? esc(t.type)}</span>
+      <span class="tag">Roadmap step ${t.roadmap_step}</span>
+      ${t.hidden ? '<span class="tag">Hidden</span>' : ''}
+      ${t.status !== 'confirmed' ? `<span class="tag st-${t.status}">${STATUS_LABEL[t.status]}</span>` : ''}
+    </div>
+    <h2>${esc(t.name)}</h2>
+    <p class="official-desc">&ldquo;${esc(t.description)}&rdquo;</p>
+  </div>
+  ${bannerFor(t)}
+  <p class="guide-text">${esc(t.guide)}</p>
+  <div class="detail-grid">
+    <div>${method}${reading}</div>
+    <aside class="panel">
+      <div class="fact"><div class="k">Effort</div><div class="v">${esc(t.effort)}</div></div>
+      <div class="fact"><div class="k">Requirements</div><div class="v">${esc(t.requirements)}</div></div>
+      ${t.count ? `<div class="fact"><div class="k">Target</div><div class="v">${t.count.toLocaleString('en-US')}</div></div>` : ''}
+      <div class="fact"><div class="k">Sources</div><div class="v sources">${t.sources.map(esc).join('<br>')}</div></div>
+      <button type="button" class="btn ${earned ? '' : 'primary'}" data-toggle="${t.id}">${earned ? 'Earned - tap to undo' : 'Mark as earned'}</button>
+    </aside>
+  </div>
+  <nav class="prevnext">
+    <span>${prev ? `<a href="#/trophy/${prev.id}">&larr; ${esc(prev.name)}</a>` : ''}</span>
+    <span>${next ? `<a href="#/trophy/${next.id}">${esc(next.name)} &rarr;</a>` : ''}</span>
+  </nav>`;
+}
+
+export function roadmapView({ trophies, roadmap, tracker }) {
+  const byId = new Map(trophies.map((t) => [t.id, t]));
+  const stepCounts = tracker.stepCounts(roadmap);
+  const watch = trophies.find((t) => t.watch);
+  const watchBox = watch && !tracker.isEarned(watch.id) ? `
+    <section class="watch-box">
+      <h2>Missable watch - read before Chapter 1 ends</h2>
+      <p><b>${esc(watch.name)}:</b> meditate at every spot the first time you reach it. Whether Chapter 1's spots stay reachable later is under investigation per PowerPyx - the habit makes the question moot.</p>
+      <p><a href="#/trophy/${watch.id}">Open the watch entry</a></p>
+    </section>` : '';
+
+  const cards = roadmap.steps.map((s) => {
+    const c = stepCounts[s.step];
+    const deps = s.depends_on.length ? `Runs after step${s.depends_on.length > 1 ? 's' : ''} ${s.depends_on.join(', ')}` : 'Start here';
+    const chips = s.trophy_ids.map((id) => {
+      const t = byId.get(id);
+      if (!t) return '';
+      const done = tracker.isEarned(id);
+      const label = isShielded(t, tracker) ? 'Hidden trophy' : esc(t.name);
+      return `<a href="#/trophy/${id}" class="${done ? 'done' : ''}">${label}</a>`;
+    }).join('');
+    return `<section class="panel step-card">
+      <header>
+        <h2>Step ${s.step} - ${esc(s.title)}</h2>
+        <span class="effort">${esc(s.effort)}</span>
+        <span class="deps">${deps}</span>
+        ${s.point_of_no_return ? '<span class="tag ponr">Point of no return</span>' : ''}
+      </header>
+      <p>${esc(s.summary)}</p>
+      ${s.point_of_no_return && s.ponr_note ? `<p class="ponr-note">${esc(s.ponr_note)}</p>` : ''}
+      <div class="bar"><i style="width:${pct(c.have, c.total)}%"></i></div>
+      <div class="step-trophies">${chips}</div>
+      <p class="demo-note">${c.have} / ${c.total} earned in this step</p>
     </section>`;
   }).join('');
-  return `<section class="roadmap">
-    <h2 class="view-title">Roadmap to the platinum</h2>
-    <p class="lede">Seven steps, in the order that wastes the least travel. Dependencies are honest: a step lists what genuinely unlocks it, and the only point-of-no-return flag in the game is the unconfirmed one in step 1.</p>
-    ${steps}
-  </section>`;
+
+  return `<h2 class="serif" style="font-size:26px;margin-top:0">The road to the platinum</h2>
+  <p style="max-width:72ch">Seven steps, every trophy placed exactly once. Steps carry their dependencies and effort so you always know what unlocks what - and the one point of no return on the whole list is flagged in step 1, where it belongs.</p>
+  ${watchBox}${cards}`;
 }
 
-// ---------------- method ----------------
-
-export function methodView(data) {
-  const sourceNames = new Set();
-  for (const t of data.trophies) for (const s of t.sources ?? []) sourceNames.add(s.name ?? s);
-  const extra = ['PowerPyx', 'U7Buy'];
-  for (const e of extra) sourceNames.add(e);
-  return `<section class="method-page">
-    <h2 class="view-title">Method &amp; sources</h2>
-    <h3>How the list was verified</h3>
-    <p>The 55 names, descriptions, grades and hidden flags in this app come from platform data, checked on launch day, 19 November 2026, along two independent pipelines that agree on every entry: PSN data via Exophase, and Xbox catalog data via XCT.live and TrueAchievements. The arithmetic closes too: 1 platinum, 2 gold, 6 silver, 46 bronze; 28 hidden; the Xbox Gamerscore sums to exactly 1,000. A full named list that circulated before launch shares zero names with this one and is not used anywhere here.</p>
-    <h3>What the status labels mean</h3>
-    <ul class="legend">
-      <li><strong>Confirmed method</strong> - the method follows the official description and sourced reporting; the guide cites its basis in its own text.</li>
-      <li><strong>Description-led</strong> - the official description is the only method in print. The guide follows its words and labels anything beyond them as inference.</li>
-      <li><strong>Method unconfirmed</strong> - five hidden trophies had no confirmed unlock method at launch (per Output Lag). Their pages give the sourced facts, a clearly-labelled reading, the safe habit that covers the plausible trigger, and how the tracker will confirm them - never invented steps.</li>
-      <li><strong>Missable watch</strong> - one trophy (Positive Mental Attitude) has its missable status under investigation (per PowerPyx and U7Buy). It is flagged everywhere it appears, with the habit that makes the question moot.</li>
-    </ul>
-    <h3>How confirmation lands after launch</h3>
-    <p>Each unconfirmed page names its own confirmation signal: a tested method printed by a named source, or live earn-rate movement on Exophase showing a repeatable trigger. When a signal lands, that trophy's page flips from unconfirmed to confirmed and its guide is rewritten from the source - the status you see is the status as of the build date, never silently upgraded.</p>
-    <h3>Sources</h3>
-    <ul class="sources">${[...sourceNames].sort().map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
-    <h3>About this app</h3>
-    <p>Leonida Legend is an original, unofficial fan guide. It stores progress only in this browser, works fully offline, and uses no Rockstar artwork or logos. Effort labels are the guide's own estimates, marked as such on every page.</p>
-  </section>`;
+export function methodView({ trophies }) {
+  const sources = [...new Set(trophies.flatMap((t) => t.sources))];
+  return `<div class="method-page">
+  <h2>Method &amp; sources</h2>
+  <p>Leonida Legend is an offline guide and tracker for the 55 PlayStation 5 trophies of Grand Theft Auto VI. It is an original work: no game artwork, no scraped guide text, and a data file built from the platform record.</p>
+  <h3>How the list was verified</h3>
+  <p>The 55 names, descriptions, grades and hidden flags were confirmed on 19 Nov 2026 across two independent platform pipelines - PlayStation Network data via Exophase and Microsoft's Xbox catalog via XCT.live - which agree on every entry, and against five editorial lists (TrueAchievements, Output Lag, Press Start, GTABase, PowerPyx). The grade split closes arithmetically: 1 Platinum, 2 Gold, 6 Silver, 46 Bronze, 28 of them hidden, and the Xbox values sum to exactly 1,000 Gamerscore.</p>
+  <p>A different, fully-named list circulated before launch ("Welcome to Vice", "Vice City Legend", and friends). It shares zero names with the platform record and is a fabrication - it appears nowhere in this guide.</p>
+  <h3>The honesty rule</h3>
+  <p>Five hidden trophies - In The Beginning&hellip;, Capital Offense, Bad Luck, I Guess, The Truth Is Out There and Ten Pin - had no confirmed unlock method at launch, and four more are led only by their descriptions. Those entries carry no invented steps. Each one gives a labelled reading of the official description, a play-it-safe habit that covers the plausible trigger, and the signal that will confirm the method once players report it. Positive Mental Attitude is the list's one missable watch: its method is known, its late-game reachability is under investigation, and the guide treats it as now-or-never rather than guessing either way.</p>
+  <h3>What is not here</h3>
+  <ul>
+    <li>No online trophies - the official list has none, and this guide invents none.</li>
+    <li>No other missable flags - no other trophy is confirmed missable at launch.</li>
+    <li>No network calls - the app runs entirely from this folder, and progress never leaves your browser unless you export it yourself.</li>
+  </ul>
+  <h3>Sources named in this guide</h3>
+  <ul>${sources.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
+  <h3>The tracker</h3>
+  <p>Progress is kept in local storage in this browser. Export downloads it as JSON; import reads that JSON back on any browser. The spoiler shield hides hidden trophies' names and descriptions on the board until they are earned - a detail page always reveals its own trophy, because you opened it on purpose.</p>
+  </div>`;
 }

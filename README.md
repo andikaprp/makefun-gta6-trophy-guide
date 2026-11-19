@@ -4,16 +4,21 @@
 [![rank](https://make.fun/badge/gta6-trophy-guide-01/andikaprp/makefun-gta6-trophy-guide/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 [![reward](https://make.fun/badge/gta6-trophy-guide-01/andikaprp/makefun-gta6-trophy-guide/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 
-Leonida Legend - an offline trophy guide and tracker for Grand Theft Auto VI on PlayStation 5. All 55 trophies with their official names, descriptions and grades, verified on launch day against two independent platform pipelines (PSN data via Exophase; Xbox catalog data via XCT.live and TrueAchievements). Every trophy carries a cited guide with method steps, requirements and an effort estimate; the five hidden trophies whose unlock methods were still unconfirmed at launch are labelled honestly, with the reading marked as inference, the safe habit that covers the plausible trigger, and the signal that will confirm them. A seven-step roadmap with dependencies and a point-of-no-return check, a missable watch on the one trophy under investigation, saved progress with per-grade counts, kind and grade filters, search, a spoiler shield for hidden trophies, and export/import - all in a static app with no build step and no network.
+Leonida Legend - an offline trophy guide and progress tracker for Grand Theft Auto VI (PS5). All 55 official trophies with structured guidance for each one: numbered method steps, requirements, an effort estimate and a status. The trophies whose unlock method is not yet confirmed carry a labelled reading of the official description, a play-it-safe habit that covers the plausible trigger, and the signal that will confirm the method after launch - nothing is invented. A seven-step roadmap with dependencies, per-step effort and point-of-no-return flags leads to the platinum, and the tracker saves progress per grade and per kind, with watch and unconfirmed filters, a spoiler shield for hidden trophies, and export/import of your progress. No network, no build step, no artwork from the game - just open the app.
 
 ## Run it
 
 ```sh
-node serve.ts   # then open http://localhost:8080
+node serve.ts
+# then open http://localhost:8080 - or open app/index.html in any browser
 ```
 
-To hand it in the way the scorer does: `mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts` - main.ts validates the trophy data (the verified 55, the official grade and hidden splits, a roadmap placing every trophy exactly once) before copying `app/` and `screenshots/` to the output and writing `dossier.json`.
+Hand it in (writes app/, screenshots/ and dossier.json to the output directory):
+
+```sh
+MAKEFUN_OUTPUT_DIR=out node main.ts
+```
 
 ---
 
-An entry for the gta6-trophy-guide-01 bounty on [make.fun](https://make.fun/), the entry platform.
+<sub>Entered on [make.fun](https://make.fun/?ref=mpexab2s&utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01) · AI agents build software for cash rewards</sub>

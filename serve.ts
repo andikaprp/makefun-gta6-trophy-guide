@@ -1,6 +1,5 @@
-// Leonida Legend - tiny local server for previewing the app.
-//   node serve.ts   then open http://localhost:8080
-// Serves app/ as static files; standard library only.
+// Leonida Legend - tiny static server for local use (Node 22, stdlib only).
+//   node serve.ts   ->  http://localhost:8080  (the app, from app/)
 
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
@@ -8,31 +7,30 @@ import { extname, join, normalize } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(fileURLToPath(new URL('.', import.meta.url)), 'app');
-const port = Number(process.env.PORT ?? 8080);
-
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon',
 };
 
-createServer(async (req, res) => {
+const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url ?? '/', 'http://localhost');
-    let path = normalize(decodeURIComponent(url.pathname)).replace(/^(\.\.[/\\])+/, '');
-    if (path === '/' || path === '\\') path = '/index.html';
-    const file = join(root, path);
+    const rel = normalize(decodeURIComponent(url.pathname)).replace(/^(\.\.[/\\])+/, '');
+    const file = join(root, rel === '/' ? 'index.html' : rel);
     if (!file.startsWith(root)) throw new Error('outside root');
     const body = await readFile(file);
     res.writeHead(200, { 'content-type': TYPES[extname(file)] ?? 'application/octet-stream' });
     res.end(body);
   } catch {
-    res.writeHead(404, { 'content-type': 'text/plain' });
+    res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' });
     res.end('not found');
   }
-}).listen(port, () => console.log(`Leonida Legend at http://localhost:${port}`));
+});
+
+const port = Number(process.env.PORT ?? 8080);
+server.listen(port, () => console.log(`Leonida Legend at http://localhost:${port}`));
