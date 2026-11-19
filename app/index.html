@@ -3,29 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leonida Legend - GTA VI Trophy Guide and Tracker</title>
-<meta name="description" content="Leonida Legend: an original offline GTA VI trophy guide and tracker built on the verified 55-trophy list, with cited guides, a 7-step roadmap and a missable watch.">
+<title>Leonida Legend - GTA VI Trophy Guide &amp; Tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app">
-  <main class="page">
-    <p class="empty-note">Loading the ledger... Leonida Legend reads its trophy data from files inside this folder and then works fully offline.</p>
-  </main>
-</div>
-
-<dialog id="io-dialog" aria-labelledby="io-title">
-  <h2 id="io-title">Export progress</h2>
-  <p>Your progress as JSON. Save it, move it to another browser, or paste an earlier export here to import it.</p>
-  <textarea id="io-text" spellcheck="false"></textarea>
-  <div class="dialog-actions">
-    <button type="button" class="btn" id="io-apply">Download / Import</button>
-    <button type="button" class="btn" id="io-close">Close</button>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">LL</div>
+    <div class="brand-text">
+      <h1>Leonida Legend</h1>
+      <p class="tagline">The GTA VI trophy guide &amp; tracker - all 55, verified from platform data</p>
+    </div>
   </div>
-</dialog>
-
-<script src="lib/tracker.js"></script>
-<script src="lib/views.js"></script>
-<script src="app.js"></script>
+  <div class="top-actions">
+    <span id="head-progress" class="head-progress">0 / 55</span>
+    <label class="switch" title="Hide hidden trophies until earned">
+      <input type="checkbox" id="spoiler-toggle" checked>
+      <span>Spoiler shield</span>
+    </label>
+    <button id="export-btn" type="button">Export</button>
+    <button id="import-btn" type="button">Import</button>
+    <input type="file" id="import-file" accept="application/json" hidden>
+  </div>
+</header>
+<nav class="tabs" aria-label="Views">
+  <a href="#/" data-nav="board">Trophy board</a>
+  <a href="#/roadmap" data-nav="roadmap">Roadmap</a>
+  <a href="#/method" data-nav="method">Method &amp; sources</a>
+</nav>
+<main id="view" tabindex="-1"></main>
+<footer class="foot">
+  <p>An unofficial fan guide. Not affiliated with Rockstar Games or Take-Two Interactive. Trophy names and descriptions are the platforms' own, verified 19 Nov 2026 against PSN data (via Exophase) and Xbox catalog data (via XCT.live and TrueAchievements). Everything runs offline; progress never leaves this browser.</p>
+</footer>
+<script type="module" src="app.js"></script>
 </body>
 </html>

@@ -1,19 +1,16 @@
-// Leonida Legend - hand-in program for gta6-trophy-guide-01.
+// Leonida Legend - gta6-trophy-guide-01 entry (Node 22, standard library only).
 //
-// Node 22, standard library only, run directly: `node main.ts`.
-// The guide itself is the static app/ folder beside this file. This
-// program first PROVES the data is sound, then hands the entry in:
-// it copies app/ and screenshots/ into the output directory and
-// writes dossier.json with the vendored make.fun library, byte for
-// byte as the scorer's own copy writes it. The vendored file is not
-// ours to edit.
+// The guide is this directory's app/ folder: plain static files a browser
+// opens at app/index.html, fully offline. This program validates the data
+// before handing anything in - the verified 55 with the full schema, the
+// official grade and hidden splits, and a roadmap that places every trophy
+// exactly once - then copies app/ and screenshots/ to the output and writes
+// dossier.json with the vendored make.fun library, byte for byte what the
+// scorer's own copy writes. Malformed data is refused with the defect
+// named, exit 2, before anything is copied.
 //
-// Validation contract: any defect in the trophy data or the roadmap
-// stops the hand-in with exit code 2 and a message naming the defect,
-// because a scarce submission must never be spent on a broken list.
-// Two runs over the same inputs produce byte-identical output.
-//
-// Local use: MAKEFUN_OUTPUT_DIR=out node main.ts
+// Run it:  mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+// Serve it locally with `node serve.ts`, then open http://localhost:8080.
 
 import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -23,109 +20,87 @@ import { buildDossier } from './vendor/makefun-frontend.ts';
 const here = fileURLToPath(new URL('.', import.meta.url));
 const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
-const VALID_GRADES = new Set(['platinum', 'gold', 'silver', 'bronze']);
-
-function fail(defect: string): never {
-  console.error(`Leonida Legend hand-in refused: ${defect}`);
+function refuse(defect) {
+  console.error(`Leonida Legend: refusing to hand in - ${defect}`);
   process.exit(2);
 }
 
-function readJson(rel: string): unknown {
-  const path = join(here, rel);
-  if (!existsSync(path)) fail(`missing file ${rel}`);
-  try {
-    return JSON.parse(readFileSync(path, 'utf8'));
-  } catch (err) {
-    fail(`${rel} is not valid JSON (${(err as Error).message})`);
+// ---------- validate the trophy data ----------
+
+const GRADES = ['platinum', 'gold', 'silver', 'bronze'];
+const STATUSES = ['confirmed', 'description-led', 'unconfirmed'];
+const EXPECTED_SPLIT = { platinum: 1, gold: 2, silver: 6, bronze: 46 };
+const EXPECTED_HIDDEN = 28;
+
+let doc;
+try {
+  doc = JSON.parse(readFileSync(join(here, 'app', 'data', 'trophies.json'), 'utf8'));
+} catch (err) {
+  refuse(`app/data/trophies.json is unreadable: ${err.message}`);
+}
+const items = Array.isArray(doc) ? doc : doc.trophies;
+if (!Array.isArray(items)) refuse('trophies.json has no trophies array');
+if (items.length !== 55) refuse(`expected the official 55 trophies, found ${items.length}`);
+
+const seenIds = new Set();
+const split = {};
+let hiddenCount = 0;
+for (const t of items) {
+  const label = t && typeof t.name === 'string' ? t.name : `id ${t?.id ?? '?'}`;
+  if (!Number.isInteger(t.id) || seenIds.has(t.id)) refuse(`trophy ${label}: id missing or duplicated`);
+  seenIds.add(t.id);
+  if (typeof t.name !== 'string' || !t.name.trim()) refuse(`trophy id ${t.id}: name is blank`);
+  if (typeof t.description !== 'string' || !t.description.trim()) refuse(`${label}: description is blank`);
+  if (!GRADES.includes(t.grade)) refuse(`${label}: grade "${t.grade}" is not a trophy grade`);
+  split[t.grade] = (split[t.grade] ?? 0) + 1;
+  if (typeof t.hidden !== 'boolean') refuse(`${label}: hidden flag is not a boolean`);
+  if (t.hidden) hiddenCount += 1;
+  if (typeof t.type !== 'string' || !t.type.trim()) refuse(`${label}: kind is blank`);
+  if (typeof t.missable !== 'boolean') refuse(`${label}: missable flag is not a boolean`);
+  if (!STATUSES.includes(t.status)) refuse(`${label}: status "${t.status}" is not a known status`);
+  if (typeof t.guide !== 'string' || !t.guide.trim()) refuse(`${label}: guide is blank`);
+  if (!Array.isArray(t.method) || t.method.length === 0 || t.method.some((s) => typeof s !== 'string' || !s.trim())) {
+    refuse(`${label}: method must be a non-empty list of steps`);
   }
+  if (typeof t.requirements !== 'string' || !t.requirements.trim()) refuse(`${label}: requirements are blank`);
+  if (typeof t.effort !== 'string' || !t.effort.trim()) refuse(`${label}: effort label is blank`);
+  if (!Number.isInteger(t.roadmap_step) || t.roadmap_step < 1 || t.roadmap_step > 7) refuse(`${label}: roadmap_step must be 1-7`);
+  if (!Array.isArray(t.sources) || t.sources.length === 0) refuse(`${label}: sources are missing`);
+  if (t.status !== 'confirmed' && !(t.reading && t.safe_play && t.confirmation)) {
+    refuse(`${label}: a ${t.status} trophy must carry reading, safe_play and confirmation notes`);
+  }
+}
+for (const g of GRADES) {
+  if (split[g] !== EXPECTED_SPLIT[g]) refuse(`grade split is ${JSON.stringify(split)}, expected ${JSON.stringify(EXPECTED_SPLIT)}`);
+}
+if (hiddenCount !== EXPECTED_HIDDEN) refuse(`${hiddenCount} hidden trophies, expected ${EXPECTED_HIDDEN}`);
+
+// ---------- validate the roadmap ----------
+
+let roadmap;
+try {
+  roadmap = JSON.parse(readFileSync(join(here, 'app', 'data', 'roadmap.json'), 'utf8'));
+} catch (err) {
+  refuse(`app/data/roadmap.json is unreadable: ${err.message}`);
+}
+const steps = roadmap.steps;
+if (!Array.isArray(steps) || steps.length !== 7) refuse('roadmap must have exactly 7 steps');
+const placement = new Map();
+steps.forEach((s, i) => {
+  if (s.step !== i + 1) refuse(`roadmap step out of order at position ${i + 1}`);
+  if (!Array.isArray(s.trophy_ids) || s.trophy_ids.length === 0) refuse(`roadmap step ${s.step} places no trophies`);
+  for (const id of s.trophy_ids) {
+    if (placement.has(id)) refuse(`trophy id ${id} is placed on the roadmap twice`);
+    placement.set(id, s.step);
+  }
+});
+for (const t of items) {
+  if (!placement.has(t.id)) refuse(`${t.name}: not placed on the roadmap`);
+  if (placement.get(t.id) !== t.roadmap_step) refuse(`${t.name}: roadmap_step disagrees with the roadmap`);
 }
 
-// ---- validate the trophy list ----
-const trophyDoc = readJson('app/data/trophies.json') as { trophies?: unknown };
-if (!trophyDoc || typeof trophyDoc !== 'object' || !Array.isArray(trophyDoc.trophies)) {
-  fail('app/data/trophies.json has no trophies array');
-}
-const trophies = trophyDoc.trophies as Array<Record<string, unknown>>;
-if (trophies.length === 0) fail('the trophies array is empty');
+// ---------- hand in ----------
 
-const seenIds = new Set<unknown>();
-let missableCount = 0;
-for (const trophy of trophies) {
-  const label = `trophy id ${String(trophy?.id)}`;
-  if (!trophy || typeof trophy !== 'object') fail('a trophy entry is not an object');
-  if (!Number.isInteger(trophy.id) || (trophy.id as number) < 1) {
-    fail(`${label} is not a positive integer id`);
-  }
-  if (seenIds.has(trophy.id)) fail(`duplicate ${label}`);
-  seenIds.add(trophy.id);
-  if (typeof trophy.name !== 'string' || trophy.name.trim() === '') {
-    fail(`${label} has a blank name`);
-  }
-  if (typeof trophy.description !== 'string' || trophy.description.trim() === '') {
-    fail(`${label} (${String(trophy.name)}) has a blank description`);
-  }
-  if (typeof trophy.guide !== 'string' || trophy.guide.trim() === '') {
-    fail(`${label} (${String(trophy.name)}) has a blank guide`);
-  }
-  if (typeof trophy.grade !== 'string' || !VALID_GRADES.has(trophy.grade)) {
-    fail(`${label} (${String(trophy.name)}) has an invalid grade: ${String(trophy.grade)}`);
-  }
-  if (typeof trophy.hidden !== 'boolean' || typeof trophy.missable !== 'boolean') {
-    fail(`${label} (${String(trophy.name)}) needs boolean hidden and missable flags`);
-  }
-  if (!Number.isInteger(trophy.roadmap_step)) {
-    fail(`${label} (${String(trophy.name)}) has no integer roadmap_step`);
-  }
-  if (!Array.isArray(trophy.sources) || trophy.sources.length === 0) {
-    fail(`${label} (${String(trophy.name)}) lists no sources`);
-  }
-  for (const source of trophy.sources as Array<Record<string, unknown>>) {
-    if (!source || typeof source.name !== 'string' || source.name.trim() === '') {
-      fail(`${label} (${String(trophy.name)}) has a source with a blank name`);
-    }
-  }
-  if (trophy.missable === true) missableCount += 1;
-}
-if (missableCount > 1) {
-  fail(`expected at most one missable trophy, found ${missableCount}`);
-}
-
-// ---- validate the roadmap against the list ----
-const roadmapDoc = readJson('app/data/roadmap.json') as { steps?: unknown };
-if (!roadmapDoc || typeof roadmapDoc !== 'object' || !Array.isArray(roadmapDoc.steps)) {
-  fail('app/data/roadmap.json has no steps array');
-}
-const placed = new Map<unknown, number>();
-for (const step of roadmapDoc.steps as Array<Record<string, unknown>>) {
-  if (!Array.isArray(step?.trophy_ns)) {
-    fail(`roadmap step ${String(step?.step)} has no trophy_ns array`);
-  }
-  for (const id of step.trophy_ns as unknown[]) {
-    if (!seenIds.has(id)) {
-      fail(`roadmap step ${String(step.step)} names unknown trophy id ${String(id)}`);
-    }
-    if (placed.has(id)) {
-      fail(`trophy id ${String(id)} is placed twice (steps ${placed.get(id)} and ${String(step.step)})`);
-    }
-    placed.set(id, Number(step.step));
-  }
-}
-for (const id of seenIds) {
-  if (!placed.has(id)) fail(`trophy id ${String(id)} is missing from the roadmap`);
-}
-// Cross-check: each trophy's own roadmap_step field must agree with
-// the step that actually places it, so the board grouping (which
-// reads roadmap_step) can never drift from the roadmap view.
-for (const trophy of trophies) {
-  if (placed.get(trophy.id) !== trophy.roadmap_step) {
-    fail(
-      `trophy id ${String(trophy.id)} (${String(trophy.name)}) declares roadmap_step ` +
-      `${String(trophy.roadmap_step)} but the roadmap places it in step ${String(placed.get(trophy.id))}`,
-    );
-  }
-}
-
-// ---- hand in ----
 mkdirSync(out, { recursive: true });
 cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
 mkdirSync(join(out, 'screenshots'), { recursive: true });
@@ -133,9 +108,6 @@ if (existsSync(join(here, 'screenshots'))) {
   cpSync(join(here, 'screenshots'), join(out, 'screenshots'), { recursive: true });
 }
 
-// The scorer's own caps, exactly as the kit starter passes them:
-// text_max_bytes shapes the dossier bytes; the rest refuse anything
-// the scorer would refuse.
 writeFileSync(
   join(out, 'dossier.json'),
   buildDossier(out, {
@@ -145,5 +117,4 @@ writeFileSync(
     app_max_bytes: 50331648,
   }),
 );
-
-console.log(`Leonida Legend handed in: ${trophies.length} trophies validated, output at ${out}`);
+console.log(`Leonida Legend: handed in ${items.length} trophies, roadmap of ${steps.length} steps, dossier written to ${out}`);

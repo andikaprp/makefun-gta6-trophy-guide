@@ -12,9 +12,33 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Story trophy for the opening mission, Gone Fishing. Play the prologue through to its end and the trophy unlocks as the mission completes; the story cannot advance without it, so it cannot be missed. Basis: the official description on the Exophase PSN list; mission order per PowerPyx's roadmap.",
+   "status": "confirmed",
+   "guide": "The opening mission, Gone Fishing, is the game's prologue: play it through to the final cutscene and the trophy unlocks as the mission completes. There is no branch or fail state that skips it - the story cannot advance without it, so it cannot be missed. If you are starting a fresh save for the platinum run, this is the first trophy you will earn. Basis: the official description on the Exophase PSN list; mission order per PowerPyx's roadmap.",
+   "method": [
+    "Start the story and play the prologue mission Gone Fishing.",
+    "Follow the mission objectives to the closing cutscene.",
+    "The trophy unlocks automatically as the mission completes."
+   ],
+   "requirements": "None - the first mission of the game.",
+   "effort": "Story - unmissable",
    "roadmap_step": 1,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 2,
@@ -24,9 +48,33 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Finish Chapter 1 of the story. Chapter trophies unlock on the chapter's final mission and are unmissable while you play the campaign in order. Basis: official description (Exophase PSN list); chapter order per PowerPyx's roadmap.",
+   "status": "confirmed",
+   "guide": "Finish Chapter 1 of the story. Chapter trophies unlock on the chapter's final mission and are unmissable while you play the campaign in order. While you are in Chapter 1, start the habit this guide's missable watch depends on: meditate at any meditation spot you pass (see Positive Mental Attitude). Basis: official description (Exophase PSN list); chapter order per PowerPyx's roadmap.",
+   "method": [
+    "Play the Chapter 1 mission chain in order.",
+    "Complete the chapter's final mission.",
+    "The trophy unlocks at the chapter's end."
+   ],
+   "requirements": "Story progression through Chapter 1.",
+   "effort": "Story - unmissable",
    "roadmap_step": 1,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 3,
@@ -36,9 +84,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Finish Chapter 2 of the story. The name is censored on PlayStation itself; the trophy unlocks on the chapter's final mission. Basis: official name and description as served by PSN and Xbox (Exophase, XCT.live).",
+   "status": "confirmed",
+   "guide": "Finish Chapter 2 of the story; the trophy unlocks on the chapter's final mission. The name is censored on PlayStation and Xbox themselves - the asterisks are part of the official name as both platforms serve it, so do not go looking for an uncensored listing. Basis: official name and description as served by PSN and Xbox (Exophase, XCT.live).",
+   "method": [
+    "Play the Chapter 2 mission chain in order.",
+    "Complete the chapter's final mission.",
+    "The trophy unlocks at the chapter's end."
+   ],
+   "requirements": "Story progression through Chapter 2.",
+   "effort": "Story - unmissable",
    "roadmap_step": 2,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    }
+   ]
   },
   {
    "id": 4,
@@ -48,9 +117,33 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Finish Chapter 3 of the story; the trophy unlocks on the chapter's final mission. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Finish Chapter 3 of the story; the trophy unlocks on the chapter's final mission and cannot be missed on a normal campaign run. By this point the map is wide open, so the free-roam grind in step 5 of the roadmap can run alongside the campaign instead of after it. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Play the Chapter 3 mission chain in order.",
+    "Complete the chapter's final mission.",
+    "The trophy unlocks at the chapter's end."
+   ],
+   "requirements": "Story progression through Chapter 3.",
+   "effort": "Story - unmissable",
    "roadmap_step": 2,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 5,
@@ -60,9 +153,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Finish Chapter 4 of the story; the trophy unlocks on the chapter's final mission. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Finish Chapter 4 of the story; the trophy unlocks on the chapter's final mission. Note the platform casing - 'Of' and 'The' are capitalised in the official name as both platforms serve it. After this chapter only the finale remains in the campaign chain. Basis: official description (Exophase PSN list); name casing as served by XCT.live and TrueAchievements.",
+   "method": [
+    "Play the Chapter 4 mission chain in order.",
+    "Complete the chapter's final mission.",
+    "The trophy unlocks at the chapter's end."
+   ],
+   "requirements": "Story progression through Chapter 4.",
+   "effort": "Story - unmissable",
    "roadmap_step": 2,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    }
+   ]
   },
   {
    "id": 6,
@@ -72,9 +186,33 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the final story mission. This is the campaign's gold trophy: finish the finale after Chapter 4 and it unlocks at the mission's end. Basis: official description (Exophase PSN list); placement in the run per PowerPyx's roadmap.",
+   "status": "confirmed",
+   "guide": "Complete the final story mission. This is the campaign's gold trophy: finish the finale after Chapter 4 and it unlocks as the mission ends. No choice at the ending is reported to change the unlock - the choices trophy (Actions Speak Louder) tracks the decisions themselves, not a specific set of answers. Basis: official description (Exophase PSN list); placement in the run per PowerPyx's roadmap.",
+   "method": [
+    "Finish Chapter 4 to open the finale.",
+    "Play the final mission to its end.",
+    "The trophy unlocks as the mission completes."
+   ],
+   "requirements": "The full campaign through Chapter 4.",
+   "effort": "Story - unmissable",
    "roadmap_step": 4,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 7,
@@ -84,9 +222,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the story mission Breakfast Run. It unlocks as the mission ends and is part of the campaign's mission chain. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the story mission Breakfast Run. It unlocks as the mission ends and sits inside the campaign's mission chain, so a normal story run earns it without any detour. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Reach the Breakfast Run mission in the campaign chain.",
+    "Complete the mission.",
+    "The trophy unlocks as the mission ends."
+   ],
+   "requirements": "Story progression to the Breakfast Run mission.",
+   "effort": "Story - unmissable",
    "roadmap_step": 2,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 8,
@@ -96,9 +255,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the story mission The Cartel Heist. It unlocks as the heist wraps up. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the story mission The Cartel Heist. It unlocks as the heist wraps up and is part of the campaign's mission chain. Heist earnings here also feed the money trophies later, so there is no reason to rush past the loot. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Reach The Cartel Heist in the campaign chain.",
+    "Complete the heist mission, including the escape.",
+    "The trophy unlocks as the mission ends."
+   ],
+   "requirements": "Story progression to The Cartel Heist.",
+   "effort": "Story - unmissable",
    "roadmap_step": 2,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 9,
@@ -108,9 +288,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the story mission Child's Play. It unlocks as the mission ends. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the story mission Child's Play. It unlocks as the mission ends and is part of the campaign's mission chain. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Reach the Child's Play mission in the campaign chain.",
+    "Complete the mission.",
+    "The trophy unlocks as the mission ends."
+   ],
+   "requirements": "Story progression to the Child's Play mission.",
+   "effort": "Story - unmissable",
    "roadmap_step": 2,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 10,
@@ -120,9 +321,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the story mission Headliners. It unlocks as the mission ends. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the story mission Headliners. It unlocks as the mission ends and is part of the campaign's mission chain. The trophy name is served in all caps by both platforms - DWNFALL is the official styling, not a typo. Basis: official description and name as served by PSN and Xbox (Exophase PSN list, XCT.live).",
+   "method": [
+    "Reach the Headliners mission in the campaign chain.",
+    "Complete the mission.",
+    "The trophy unlocks as the mission ends."
+   ],
+   "requirements": "Story progression to the Headliners mission.",
+   "effort": "Story - unmissable",
    "roadmap_step": 2,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 11,
@@ -132,9 +354,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the story mission VCIA Takedown. It unlocks as the mission ends. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the story mission VCIA Takedown. It unlocks as the mission ends and is part of the campaign's mission chain. VCIA is also the setting of the free-roam trophy Catch Me If You Can, so the layout you learn here is reused later. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Reach the VCIA Takedown mission in the campaign chain.",
+    "Complete the mission.",
+    "The trophy unlocks as the mission ends."
+   ],
+   "requirements": "Story progression to the VCIA Takedown mission.",
+   "effort": "Story - unmissable",
    "roadmap_step": 2,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 12,
@@ -144,9 +387,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the story mission Operation Savage Glory. It unlocks as the mission ends. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the story mission Operation Savage Glory. It unlocks as the mission ends and is part of the campaign's mission chain. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Reach Operation Savage Glory in the campaign chain.",
+    "Complete the mission.",
+    "The trophy unlocks as the mission ends."
+   ],
+   "requirements": "Story progression to Operation Savage Glory.",
+   "effort": "Story - unmissable",
    "roadmap_step": 2,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 13,
@@ -156,10 +420,37 @@
    "type": "completion",
    "hidden": false,
    "missable": false,
-   "guide": "Attain 100% completion: everything the in-game completion checklist counts - story, strands, collectibles, activities and properties. Leave this for last; the tracker in this app covers every other trophy the checklist needs. Basis: official description (Exophase PSN list); the 100% structure per PowerPyx's roadmap.",
+   "status": "confirmed",
+   "guide": "Attain 100% completion: everything the in-game completion checklist counts - story, strands, collectibles, activities and properties. Leave this for last; every other trophy in this app feeds it, and the board's remaining-effort view tells you what is left. The checklist percentage is the game's own counter, so when it stalls below 100, work the checklist categories rather than trophy hunting at random. Basis: official description (Exophase PSN list); the 100% structure per PowerPyx's roadmap.",
+   "method": [
+    "Finish the campaign and the character/stranger strands.",
+    "Clear the collectibles and activity counters on the board.",
+    "Buy the properties the checklist counts.",
+    "Check the in-game completion screen for the last missing category."
+   ],
+   "requirements": "Nearly every other trophy on this list.",
+   "effort": "The long haul - most of a full playthrough",
    "roadmap_step": 7,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }, { "name": "Press Start" }, { "name": "Push Square" }],
-   "count": "100%"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    },
+    {
+     "name": "Push Square"
+    }
+   ]
   },
   {
    "id": 14,
@@ -169,10 +460,34 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Complete 250 stunts across Leonida: stunt jumps and stunt events both feed the counter the game tracks. Work them in as you explore rather than grinding at the end; the board in this app tracks the target from the official list data. Basis: official description (Exophase PSN list); the tracked count as listed by Exophase and PSNProfiles' list data.",
+   "status": "confirmed",
+   "guide": "Complete 250 stunts across Leonida: stunt jumps and stunt events both feed the counter the game tracks. Work them in as you explore rather than grinding at the end - a few in every district keeps this from becoming a wall. Failed attempts do not remove completed stunts, so keep moving to fresh spots instead of retrying one jump. Basis: official description (Exophase PSN list); the tracked count as listed by Exophase.",
+   "method": [
+    "Take stunt jumps and stunt events as you find them, district by district.",
+    "Mark districts done on the board so the last 50 are easy to locate.",
+    "The trophy lands on the 250th completed stunt."
+   ],
+   "requirements": "Free roam; a fast vehicle helps.",
+   "effort": "Grind - spread it across the whole run",
+   "count": "250 stunts",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "250 stunts"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 15,
@@ -182,10 +497,31 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Try each type of activity once: when a new activity icon appears on the map, play it a single time. There are nine activity types to sample, and one attempt at each is enough. Basis: official description (Exophase PSN list); the activity count as listed in the list data.",
+   "status": "confirmed",
+   "guide": "Try each type of activity once: when a new activity icon appears on the map, play it a single time. There are nine activity types to sample, and one attempt at each is enough - winning is not required. This is the cheapest trophy on the list if you sample as you go instead of backtracking at the end. Basis: official description (Exophase PSN list); the activity count as listed in the list data.",
+   "method": [
+    "When a new activity icon appears, play that activity once.",
+    "Repeat for all nine activity types.",
+    "The trophy lands when the last new type is sampled."
+   ],
+   "requirements": "Free roam; activities unlock as the map opens.",
+   "effort": "Quick - minutes per type",
+   "count": "9 activity types",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "9 activity types"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 16,
@@ -195,10 +531,32 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Earn a gold medal in every Shooting Range challenge - all 42 of them. Learn each weapon's challenge on its own range, then chase gold once your aim settings feel right; medals are kept per challenge, so progress is never lost. Basis: official description (Exophase PSN list); the challenge count as listed in the list data.",
+   "status": "confirmed",
+   "guide": "Earn a gold medal in every Shooting Range challenge - all 42 of them. Learn each weapon's challenge on its own range first, then chase gold once your aim settings feel right; medals are kept per challenge, so progress is never lost and a bad run costs nothing but time. Save the hardest weapon classes for after the campaign, when your handling stats are highest. Basis: official description (Exophase PSN list); the challenge count as listed in the list data.",
+   "method": [
+    "Run each range challenge once to learn its targets and par.",
+    "Adjust aim sensitivity before chasing golds, not during.",
+    "Gold the challenges weapon by weapon; medals are banked per challenge.",
+    "The trophy lands on the 42nd gold."
+   ],
+   "requirements": "Access to the shooting ranges; all weapon classes.",
+   "effort": "Skill grind - the 42 golds take practice",
+   "count": "42 challenges",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "42 challenges"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 17,
@@ -208,10 +566,31 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Win a Top Fun drone race at every location - 14 race locations in all. A win at each location is what counts; re-run a course until the win lands, then move on. Basis: official description (Exophase PSN list); the location count as listed in the list data.",
+   "status": "confirmed",
+   "guide": "Win a Top Fun drone race at every location - 14 race locations in all. A win at each location is what counts; re-run a course until the win lands, then move on. Learn a course with a sighting run first: drone races punish memorised lines less than they punish first-sight corners. Basis: official description (Exophase PSN list); the location count as listed in the list data.",
+   "method": [
+    "Fly each location once to learn the line.",
+    "Re-run until you win at that location.",
+    "The trophy lands when all 14 locations are won."
+   ],
+   "requirements": "Free roam; Top Fun race points across the map.",
+   "effort": "Moderate - 14 wins, retries allowed",
+   "count": "14 locations",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "14 locations"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 18,
@@ -221,10 +600,31 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Win 20 different races. Each distinct race won counts once, so work across the race series on the map instead of replaying a favourite. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Win 20 different races. Each distinct race won counts once, so work across the race series on the map instead of replaying a favourite. Race wins also pay, which makes this a good early grind partner for the money trophies. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Enter races across different series and districts.",
+    "Win each distinct race once; replays of a won race add nothing.",
+    "The trophy lands on the 20th distinct win."
+   ],
+   "requirements": "Free roam; a competitive vehicle per race class.",
+   "effort": "Moderate - 20 distinct wins",
+   "count": "20 races",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "20 races"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 19,
@@ -234,9 +634,30 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Beat Cal in a fishing challenge. Take up the fishing challenge when it opens and land the better catch against Cal. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Beat Cal in a fishing challenge. Take up the fishing challenge when it opens and land the better catch against Cal. If you lose, the challenge can be retaken - nothing about it is one-shot. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Unlock fishing and meet Cal's challenge.",
+    "Fish the challenge and land the better catch.",
+    "The trophy unlocks when you beat Cal."
+   ],
+   "requirements": "Fishing unlocked in free roam.",
+   "effort": "Quick - one challenge win",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 20,
@@ -246,9 +667,30 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Complete one arcade game: find an arcade cabinet, play its game through to the end once. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete one arcade game: find an arcade cabinet, play its game through to the end once. Starting a cabinet is not enough - the game has to be played to completion. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Find an arcade cabinet in free roam.",
+    "Play its game through to the end once.",
+    "The trophy unlocks on completion."
+   ],
+   "requirements": "Free roam; any arcade cabinet.",
+   "effort": "Quick - one full arcade game",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 21,
@@ -258,9 +700,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the final mission for Andy: work Andy's mission strand to its last job and finish it. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the final mission for Andy: work Andy's mission strand to its last job and finish it. Character strands unlock through the campaign, so if Andy's next job is not on the map, advance the story and check again. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Work Andy's strand mission by mission as it unlocks.",
+    "Complete the strand's final mission.",
+    "The trophy unlocks as that mission ends."
+   ],
+   "requirements": "Story progression to unlock Andy's strand.",
+   "effort": "Story strand - a short mission chain",
    "roadmap_step": 3,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 22,
@@ -270,9 +733,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the final mission for Kenton: work Kenton's mission strand to its last job and finish it. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the final mission for Kenton: work Kenton's mission strand to its last job and finish it. Character strands unlock through the campaign, so if Kenton's next job is not on the map, advance the story and check again. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Work Kenton's strand mission by mission as it unlocks.",
+    "Complete the strand's final mission.",
+    "The trophy unlocks as that mission ends."
+   ],
+   "requirements": "Story progression to unlock Kenton's strand.",
+   "effort": "Story strand - a short mission chain",
    "roadmap_step": 3,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 23,
@@ -282,9 +766,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the final mission for Billy: work Billy's mission strand to its last job and finish it. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the final mission for Billy: work Billy's mission strand to its last job and finish it. Character strands unlock through the campaign, so if Billy's next job is not on the map, advance the story and check again. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Work Billy's strand mission by mission as it unlocks.",
+    "Complete the strand's final mission.",
+    "The trophy unlocks as that mission ends."
+   ],
+   "requirements": "Story progression to unlock Billy's strand.",
+   "effort": "Story strand - a short mission chain",
    "roadmap_step": 3,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 24,
@@ -294,10 +799,31 @@
    "type": "story",
    "hidden": false,
    "missable": false,
-   "guide": "Complete 8 mission strands for strangers across Leonida. Stranger strands are the side stories marked on the map; finish eight of them end to end. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete 8 mission strands for strangers across Leonida. Stranger strands are the side stories marked on the map; finish eight of them end to end. Note the plural in the official name - 'Strangers & Freaks' - some early editorial lists printed it wrong. Strands count when the whole strand is done, not per mission, so finish what you start. Basis: official description (Exophase PSN list); name as served by XCT.live and Output Lag.",
+   "method": [
+    "Pick up stranger strands as their markers appear.",
+    "Finish each strand end to end - partial strands do not count.",
+    "The trophy lands on the eighth completed strand."
+   ],
+   "requirements": "Free roam across the state; strands unlock over time.",
+   "effort": "Moderate - eight full side stories",
+   "count": "8 strands",
    "roadmap_step": 3,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }],
-   "count": "8 strands"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    }
+   ]
   },
   {
    "id": 25,
@@ -307,9 +833,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the final mission for Randy: work Randy's mission strand to its last job and finish it. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the final mission for Randy: work Randy's mission strand to its last job and finish it. Character strands unlock through the campaign, so if Randy's next job is not on the map, advance the story and check again. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Work Randy's strand mission by mission as it unlocks.",
+    "Complete the strand's final mission.",
+    "The trophy unlocks as that mission ends."
+   ],
+   "requirements": "Story progression to unlock Randy's strand.",
+   "effort": "Story strand - a short mission chain",
    "roadmap_step": 3,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 26,
@@ -319,9 +866,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Complete the final mission for Tyrone: work Tyrone's mission strand to its last job and finish it. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete the final mission for Tyrone: work Tyrone's mission strand to its last job and finish it. Character strands unlock through the campaign, so if Tyrone's next job is not on the map, advance the story and check again. The official name capitalises 'On' - Spin On This! Basis: official description (Exophase PSN list).",
+   "method": [
+    "Work Tyrone's strand mission by mission as it unlocks.",
+    "Complete the strand's final mission.",
+    "The trophy unlocks as that mission ends."
+   ],
+   "requirements": "Story progression to unlock Tyrone's strand.",
+   "effort": "Story strand - a short mission chain",
    "roadmap_step": 3,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 27,
@@ -331,11 +899,37 @@
    "type": "collectibles",
    "hidden": false,
    "missable": true,
-   "guide": "Meditate at every meditation spot across Leonida - 18 spots in the list data. WATCH: PowerPyx and U7Buy list this as the one trophy whose missability is still under investigation at launch, because a Chapter 1 spot may not be reachable again later. Until that settles, meditate at each spot the first time you reach it rather than saving them for the endgame. Basis: official description (Exophase PSN list); spot count from the list data; missable status per PowerPyx and U7Buy, marked unconfirmed.",
-   "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }, { "name": "PowerPyx" }],
+   "status": "confirmed",
+   "guide": "Meditate at every meditation spot across Leonida - 18 spots in the list data. The method is confirmed; what is NOT settled is whether every spot stays reachable all game. PowerPyx and U7Buy list this as the one trophy whose missable status is still under investigation at launch, because a Chapter 1 spot may not be reachable again later. Until that settles, treat every spot as meditate-on-first-visit, especially in Chapter 1: it costs seconds and removes the only known risk to a single-save platinum run. Basis: official description (Exophase PSN list); spot count from the list data; missable status per PowerPyx and U7Buy, marked unconfirmed.",
+   "method": [
+    "From Chapter 1 on, meditate at every meditation spot the first time you reach it - never leave one for later.",
+    "Sweep the remaining spots district by district in free roam.",
+    "The trophy lands on the 18th spot meditated at."
+   ],
+   "requirements": "Map access as the story opens Leonida; Chapter 1 spots are the risk window.",
+   "effort": "Collection sweep - 18 spots, minutes each",
    "count": "18 spots",
-   "missable_note": "Missable status under investigation at launch (PowerPyx, U7Buy): a Chapter 1 meditation spot may not be reachable later. Meditate at each spot when you first reach it."
+   "missable_note": "Missable status UNDER INVESTIGATION at launch (per PowerPyx, U7Buy): a Chapter 1 meditation spot may not be reachable later. Meditate at each spot when you first reach it and this trophy cannot hurt you either way.",
+   "safe_play": "Meditate on first visit, every time, from the prologue onward. Keep one rolling save from before the finale until the investigation settles.",
+   "confirmation": "This tracker flips the watch off when PowerPyx or U7Buy settle the question, or when post-launch earn data on Exophase shows players unlocking it after full story completion.",
+   "roadmap_step": 5,
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    },
+    {
+     "name": "PowerPyx"
+    }
+   ]
   },
   {
    "id": 28,
@@ -345,9 +939,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Hunt the unique animal for Bret: take Bret's hunting task and bring down the one-of-a-kind animal it points you to. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Hunt the unique animal for Bret: take Bret's hunting task and bring down the one-of-a-kind animal it points you to. It is a single scripted hunt, not a species checklist - follow Bret's task markers rather than hunting at random. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Take Bret's hunting task when it appears.",
+    "Track and hunt the unique animal the task names.",
+    "The trophy unlocks when the hunt is delivered."
+   ],
+   "requirements": "Story progression to unlock Bret's task.",
+   "effort": "Story strand - one scripted hunt",
    "roadmap_step": 3,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 29,
@@ -357,10 +972,31 @@
    "type": "collectibles",
    "hidden": false,
    "missable": false,
-   "guide": "Complete 3 Collectible Card sets. Cards are found across Leonida; finish any three full sets - the tracker counts sets, not loose cards. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete 3 Collectible Card sets. Cards are found across Leonida; finish any three full sets - the tracker counts sets, not loose cards, so a nearly-finished set is worth more than scattered singles. Prioritise completing one set at a time instead of spreading pickups evenly. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Collect cards as you travel; note which set each belongs to.",
+    "Close out one full set at a time.",
+    "The trophy lands on the third completed set."
+   ],
+   "requirements": "Free roam across the whole map.",
+   "effort": "Collection sweep - three full sets",
+   "count": "3 sets",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "3 sets"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 30,
@@ -370,10 +1006,28 @@
    "type": "collectibles",
    "hidden": false,
    "missable": false,
-   "guide": "WAiNK It at 100 locations: use the WAiNK spot at one hundred different places around the state. Treat it as a sightseeing sweep and clear a few in every district you pass through. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "WAiNK It at 100 locations: use the WAiNK spot at one hundred different places around the state. Treat it as a sightseeing sweep and clear a few in every district you pass through; repeats at the same spot do not add to the counter. The name's casing - WAiNKer - is exactly as both platforms serve it, and the description's 'WAiNK It' is the official wording. Basis: official description (Exophase PSN list); casing as served by XCT.live and TrueAchievements.",
+   "method": [
+    "Use each new WAiNK spot you pass, a few per district.",
+    "Track districts cleared on the board so the last spots are findable.",
+    "The trophy lands on the 100th distinct location."
+   ],
+   "requirements": "Free roam across the whole map.",
+   "effort": "Collection sweep - 100 stops",
+   "count": "100 locations",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }],
-   "count": "100 locations"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    }
+   ]
   },
   {
    "id": 31,
@@ -383,10 +1037,31 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Complete 50 Challenges from the game's challenge lists. Most players clear this on the way to 100% without aiming at it; check the challenge menus when the counter feels close. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Complete 50 Challenges from the game's challenge lists. Most players clear this on the way to 100% without aiming at it; check the challenge menus when the counter feels close, and pick off the short ones deliberately rather than waiting for the last few to happen by accident. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Play normally - challenges complete across all modes.",
+    "Near 50, open the challenge lists and finish the shortest remaining ones.",
+    "The trophy lands on the 50th completed challenge."
+   ],
+   "requirements": "None - accrues across normal play.",
+   "effort": "Passive - mostly accrues on the way to 100%",
+   "count": "50 challenges",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "50 challenges"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 32,
@@ -396,9 +1071,30 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "With your partner beside you, earn a 4-star Wanted Level, then lose the heat and escape. Build the stars together in one spree, break line of sight, and stay hidden until the level clears. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "With your partner beside you, earn a 4-star Wanted Level, then lose the heat and escape. Build the stars together in one spree, break line of sight, and stay hidden until the level clears - the trophy needs the escape, not just the stars. Pick open ground with alleys or interiors nearby before you start the spree. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Partner up in free roam and pick ground with hiding spots nearby.",
+    "Commit crimes together up to a 4-star Wanted Level.",
+    "Break line of sight and stay hidden until the heat fully clears."
+   ],
+   "requirements": "Your partner present in free roam.",
+   "effort": "Quick feat - one clean escape",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 33,
@@ -408,10 +1104,31 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Rob 3 shops back-to-back with your partner without losing your Wanted Level in between: keep the heat on from the first robbery to the third, then escape afterwards. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Rob 3 shops back-to-back with your partner without losing your Wanted Level in between: keep the heat on from the first robbery to the third, then escape afterwards. Plan the three shops on one street or block first - travel time between shops is where the Wanted Level usually bleeds away. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Scout three shops close together and partner up.",
+    "Rob the first, keep the Wanted Level alive en route to the second and third.",
+    "After the third robbery, escape the heat."
+   ],
+   "requirements": "Your partner present; three shops in one area.",
+   "effort": "Quick feat - one planned route",
+   "count": "3 shops",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "3 shops"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 34,
@@ -421,10 +1138,31 @@
    "type": "collectibles",
    "hidden": false,
    "missable": false,
-   "guide": "Discover 100 vehicles: get into vehicles you have never driven and each new model registers as discovered. Steal widely as you travel instead of farming one car park. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Discover 100 vehicles: get into vehicles you have never driven and each new model registers as discovered. Steal widely as you travel instead of farming one car park - variety spawns by district and wealth level, so rich and poor neighbourhoods both hold models the other lacks. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Enter every new vehicle model you see while travelling.",
+    "Vary districts - spawns differ by area.",
+    "The trophy lands on the 100th distinct model discovered."
+   ],
+   "requirements": "Free roam across rich and poor districts alike.",
+   "effort": "Collection sweep - accrues while travelling",
+   "count": "100 vehicles",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "100 vehicles"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 35,
@@ -434,10 +1172,34 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Take down 5 enemies inside a single use of Combat Focus. Line the shot up first: trigger Focus in a crowd of hostiles and drop five before it drains. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Take down 5 enemies inside a single use of Combat Focus. Line the shot up first: trigger Focus in a crowd of hostiles and drop five before it drains. Gang operations and vault escapes give natural crowds; do not waste the attempt on scattered pairs. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Find a group of five or more hostiles - a gang operation works.",
+    "Position with line of sight on the group before triggering.",
+    "Activate Combat Focus and take down five before it drains."
+   ],
+   "requirements": "Combat Focus ability; a crowd of hostiles.",
+   "effort": "Quick feat - setup is the whole job",
+   "count": "5 in one Focus",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "5 in one Focus"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 36,
@@ -447,9 +1209,33 @@
    "type": "activities",
    "hidden": true,
    "missable": false,
-   "guide": "Make an unscheduled departure at VCIA: leave the airport grounds in a way no schedule allows - in practice, take an aircraft or vehicle out of VCIA without being cleared for it. This reading follows the official description; no fuller method was in print at launch. Basis: official description (Exophase PSN list).",
+   "status": "description-led",
+   "guide": "The official description - 'Make an unscheduled departure at VCIA' - is the whole method in print at launch: leave the airport grounds in a way no schedule allows, in practice taking an aircraft or vehicle out of VCIA without being cleared for it. That reading follows the description's plain words; no fuller method was in print at launch, so this guide labels it a reading rather than a confirmed route. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Enter the VCIA airport grounds in free roam.",
+    "Take an aircraft or vehicle out of the airport without any scheduled departure.",
+    "If it does not trigger, try leaving by air rather than by road - the reading points at departure, not trespass."
+   ],
+   "requirements": "Access to the VCIA airport grounds.",
+   "effort": "Quick feat - if the reading is right",
+   "reading": "The description's words point to exiting VCIA by air or road in a vehicle you were never cleared to depart in - most plausibly stealing a plane and taking off.",
+   "safe_play": "Costs nothing to attempt whenever you pass VCIA; nothing about the attempt can harm other progress.",
+   "confirmation": "This tracker marks it confirmed when a guide source (PowerPyx, Output Lag) prints a tested method or Exophase earn data shows a repeatable trigger.",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 37,
@@ -459,9 +1245,33 @@
    "type": "activities",
    "hidden": true,
    "missable": false,
-   "guide": "The description - 'Kinda hot in these Rhinos' - points at the Rhino tank: get into a Rhino and survive what follows. This reading follows the official description; no fuller method was in print at launch. Basis: official description (Exophase PSN list).",
+   "status": "description-led",
+   "guide": "The official description - 'Kinda hot in these Rhinos' - points at the Rhino tank: get into a Rhino and survive what follows. That reading follows the description's plain words and the series' long-running vehicle name; no fuller method was in print at launch, so the exact trigger (entering, driving, or surviving a wanted level inside one) is labelled unproven here. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Find a Rhino tank - military and heavy-response contexts are the reading's candidates.",
+    "Get in and drive it; stay in through the heat it draws.",
+    "If entering alone does not trigger it, survive a wanted level inside it before concluding."
+   ],
+   "requirements": "Finding a Rhino in free roam or high-heat play.",
+   "effort": "Quick feat - once you find a Rhino",
+   "reading": "Rhino is the series' tank; the trophy almost certainly involves taking or driving one. Which exact action pops it was not in print at launch.",
+   "safe_play": "A Rhino rampage also feeds wanted-level feats; combine the attempt with Hot Together's escape practice.",
+   "confirmation": "This tracker marks it confirmed when a guide source prints a tested method.",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 38,
@@ -471,9 +1281,30 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Rob a jewelry store without being detected: go in quietly, keep staff and cameras from raising the alarm, and be gone before anyone knows. If detection breaks, leave and try another store rather than fighting it out. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Rob a jewelry store without being detected: go in quietly, keep staff and cameras from raising the alarm, and be gone before anyone knows. If detection breaks, leave and try another store rather than fighting it out - a loud robbery still pays, but it does not count for this. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Pick a jewelry store and approach without drawing attention.",
+    "Rob it while keeping staff and cameras from raising the alarm.",
+    "Leave the area undetected to bank the unlock."
+   ],
+   "requirements": "A jewelry store in free roam; a quiet approach.",
+   "effort": "Quick feat - patience over firepower",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 39,
@@ -483,10 +1314,31 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Rob 5 Bank Vaults and escape after each one. Vault jobs are the heavy scores: crack the vault, take the money, and lose the heat; five successful getaways complete the set. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Rob 5 Bank Vaults and escape after each one. Vault jobs are the heavy scores: crack the vault, take the money, and lose the heat; five successful getaways complete the set. A vault you flee empty or get busted on does not count - the escape is part of the requirement, so plan the getaway before you crack the door. Note the official spelling 'Withdrawal' - one early editorial list printed it wrong. Basis: official description (Exophase PSN list); spelling as served by both platforms.",
+   "method": [
+    "Take a bank vault job and crack the vault.",
+    "Take the money and escape the heat - the escape is required.",
+    "Repeat at five vaults in total."
+   ],
+   "requirements": "Access to bank vault jobs; a planned getaway each time.",
+   "effort": "Moderate - five full scores with escapes",
+   "count": "5 vaults",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "5 vaults"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 40,
@@ -496,9 +1348,30 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Rob an Armored Truck and escape: crack a moving armored truck, take what it carries, and lose the heat afterwards. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Rob an Armored Truck and escape: crack a moving armored truck, take what it carries, and lose the heat afterwards. As with the vaults, the escape is part of the requirement - looting the truck and getting caught earns nothing here. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Find a moving armored truck in free roam.",
+    "Stop and crack it, take the contents.",
+    "Escape the heat to complete the trophy."
+   ],
+   "requirements": "Free roam; enough firepower or a vehicle to stop a truck.",
+   "effort": "Quick feat - one truck, one escape",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 41,
@@ -508,10 +1381,31 @@
    "type": "collectibles",
    "hidden": false,
    "missable": false,
-   "guide": "Explore all of Leonida: visit every area of the state - 52 areas in the list data. The map fills in as you travel; remote corners are the ones usually left. Basis: official description (Exophase PSN list); area count from the list data.",
+   "status": "confirmed",
+   "guide": "Explore all of Leonida: visit every area of the state - 52 areas in the list data. The map fills in as you travel; remote corners are the ones usually left, so when this is your last exploration trophy, sweep the map edges and islands rather than the cities. Basis: official description (Exophase PSN list); area count from the list data.",
+   "method": [
+    "Travel every district as you play - the map fills in per area.",
+    "Late in the run, sweep the grey corners: coasts, islands, rural edges.",
+    "The trophy lands when the last area is visited."
+   ],
+   "requirements": "The whole map reachable - late story or full free roam.",
+   "effort": "Collection sweep - mostly accrues, edges need a pass",
+   "count": "52 areas",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "52 areas"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 42,
@@ -521,10 +1415,31 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Rob an Illegal Operation belonging to each gang - one operation for every one of the 9 gangs. Keep a note of which gangs you have hit; the last two are easy to lose track of. Basis: official description (Exophase PSN list); gang count from the list data.",
+   "status": "confirmed",
+   "guide": "Rob an Illegal Operation belonging to each gang - one operation for every one of the 9 gangs. Keep a note of which gangs you have hit; the last two are easy to lose track of, and re-robbing a gang you already counted adds nothing. The board's checklist on this page is built for exactly that bookkeeping. Basis: official description (Exophase PSN list); gang count from the list data.",
+   "method": [
+    "Rob one Illegal Operation per gang, noting each gang as you go.",
+    "Target territories of gangs you have not hit yet.",
+    "The trophy lands on the ninth gang's operation."
+   ],
+   "requirements": "Free roam across gang territories.",
+   "effort": "Moderate - nine targeted robberies",
+   "count": "9 gangs",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "9 gangs"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 43,
@@ -534,9 +1449,30 @@
    "type": "activities",
    "hidden": true,
    "missable": false,
-   "guide": "METHOD UNCONFIRMED. The official description reads 'Enjoy a cocktail with a view on Ocean Beach', and Output Lag lists this among the hidden trophies with no confirmed unlock method at launch. The description points to ordering or enjoying a cocktail somewhere on Ocean Beach with a view; try the beachfront bars there, but treat the exact trigger as unproven until a source confirms it. Basis: official description (Exophase PSN list); unconfirmed status per Output Lag.",
+   "status": "unconfirmed",
+   "guide": "METHOD UNCONFIRMED. The official description reads 'Enjoy a cocktail with a view on Ocean Beach', and Output Lag lists this among the hidden trophies with no confirmed unlock method at launch. The description points to ordering or enjoying a cocktail somewhere on Ocean Beach with a view; try the beachfront bars there, but treat the exact trigger as unproven until a source confirms it. The name ends with a real ellipsis character, exactly as the platforms serve it. Basis: official description (Exophase PSN list); unconfirmed status per Output Lag.",
+   "method": [
+    "Go to Ocean Beach in free roam.",
+    "Order or enjoy a cocktail at a beachfront spot with a view - try each beachfront bar once.",
+    "If none triggers it, leave it open: the exact spot is unproven, not your mistake."
+   ],
+   "requirements": "Free roam access to Ocean Beach.",
+   "effort": "Unknown - unconfirmed trigger",
+   "reading": "Name and description together suggest a specific scripted moment - a first cocktail at an Ocean Beach venue with a view, possibly story-adjacent. That is inference from the wording, labelled as such, not a sourced method.",
+   "safe_play": "Whenever you are on Ocean Beach, order a cocktail at any bar you pass. It costs a little in-game cash and covers the plausible triggers without a special trip.",
+   "confirmation": "This tracker flips it to confirmed when a source prints a tested trigger, and watches Exophase earn rates - a rising unlock percentage with a repeatable community report is the signal.",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    }
+   ]
   },
   {
    "id": 44,
@@ -546,9 +1482,33 @@
    "type": "activities",
    "hidden": true,
    "missable": false,
-   "guide": "METHOD UNCONFIRMED. The official description reads 'Smash your way out of a vehicle showroom in classic style', and Output Lag lists this among the hidden trophies with no confirmed unlock method at launch. The description points to driving a car out through a showroom's glass front; treat the exact trigger as unproven until a source confirms it. Basis: official description (Exophase PSN list); unconfirmed status per Output Lag.",
+   "status": "unconfirmed",
+   "guide": "METHOD UNCONFIRMED. The official description reads 'Smash your way out of a vehicle showroom in classic style', and Output Lag lists this among the hidden trophies with no confirmed unlock method at launch. The description points to driving a car out through a showroom's glass front; treat the exact trigger - which showroom, which car, whether theft is required - as unproven until a source confirms it. Basis: official description (Exophase PSN list); unconfirmed status per Output Lag.",
+   "method": [
+    "Enter a vehicle showroom in free roam.",
+    "Get into a car inside and drive out through the glass front rather than the door.",
+    "If it does not trigger, try another showroom before concluding - the specific one is unproven."
+   ],
+   "requirements": "A vehicle showroom with cars inside.",
+   "effort": "Unknown - unconfirmed trigger",
+   "reading": "'In classic style' reads as a nod to the series' oldest trick: stealing a car by driving it through the showroom window. Inference from the wording, labelled as such.",
+   "safe_play": "You will visit showrooms while discovering vehicles and buying garages - exit through the glass every time and the plausible trigger is covered at no cost.",
+   "confirmation": "This tracker flips it to confirmed when a source prints a tested trigger or a repeatable community report emerges.",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 45,
@@ -558,9 +1518,33 @@
    "type": "activities",
    "hidden": true,
    "missable": false,
-   "guide": "The description points to the bowling alley: 'Follow-through at the Kolt & Associates' bowling alley.' Play the bowling at that named alley and follow through on the game there. Basis: official description (Exophase PSN list).",
+   "status": "description-led",
+   "guide": "The description names the place and the act: 'Follow-through at the Kolt & Associates' bowling alley.' Play the bowling at that named alley and follow through on the game there. Whether a full game, a single frame, or a specific score is required was not spelled out in print at launch, so this guide follows the description's words and labels the rest as reading. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Find the Kolt & Associates' bowling alley.",
+    "Play a bowling game there, through to the end.",
+    "If a full game does not trigger it, the trigger is narrower than the description - leave it flagged, not forced."
+   ],
+   "requirements": "Access to the named bowling alley.",
+   "effort": "Quick - one bowling visit",
+   "reading": "'Follow-through' is bowling's own term for the arm motion after release - the description most plausibly means completing the bowling activity at that alley. Inference, labelled as such.",
+   "safe_play": "Bowling also samples an activity type for Master of None, so the visit is never wasted.",
+   "confirmation": "This tracker marks it confirmed when a guide source prints the exact requirement.",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 46,
@@ -570,9 +1554,33 @@
    "type": "activities",
    "hidden": true,
    "missable": false,
-   "guide": "The description reads only 'A partnership with mass appeal.' No confirmed method was in print at launch; the words point to a partner activity performed in front of a crowd or audience. Treat any more specific claim as unproven until a source confirms it. Basis: official description (Exophase PSN list).",
+   "status": "description-led",
+   "guide": "The official description reads only 'A partnership with mass appeal.' No confirmed method was in print at launch; the words point to a partner activity performed in front of a crowd or audience. Treat any more specific claim as unproven until a source confirms it - this guide will not dress a guess up as a method. Basis: official description (Exophase PSN list).",
+   "method": [
+    "No confirmed method exists yet - do not chase forum specifics that cite no source.",
+    "Play partner activities in public places as they come up; the plausible triggers live there.",
+    "Leave it open until a sourced method lands; the tracker will update this page."
+   ],
+   "requirements": "Unknown - method not in print at launch.",
+   "effort": "Unknown - awaiting a confirmed method",
+   "reading": "'Mass appeal' suggests an audience: a partner stunt, race win or performance in front of a crowd. Pure inference from five words, labelled as such.",
+   "safe_play": "Nothing to protect here - no plausible trigger involves a one-time story moment that we know of, and the guide says so rather than inventing a warning.",
+   "confirmation": "This tracker flips it to confirmed when PowerPyx, Output Lag or another named source prints a tested method.",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 47,
@@ -582,9 +1590,30 @@
    "type": "story",
    "hidden": true,
    "missable": false,
-   "guide": "Choices made, for better or worse: this one is earned by making the story's decisions as they come. Keep playing the campaign and choosing at each branch; the game tracks the choices themselves, so there is nothing extra to hunt. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Choices made, for better or worse: this one is earned by making the story's decisions as they come. Keep playing the campaign and choosing at each branch; the game tracks the choices themselves, so there is nothing extra to hunt and no 'right' set of answers to look up. The official name is the short form - 'Actions Speak Louder' - exactly as both platforms serve it. Basis: official description (Exophase PSN list); short-form name per XCT.live, Output Lag and U7Buy.",
+   "method": [
+    "Play the campaign and make each story choice as it arrives.",
+    "Do not reload to change answers - the trophy tracks choosing, not choosing well.",
+    "The trophy unlocks once the tracked choices are made."
+   ],
+   "requirements": "Story progression through the choice points.",
+   "effort": "Story - accrues as you play",
    "roadmap_step": 2,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "U7Buy" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "U7Buy"
+    }
+   ]
   },
   {
    "id": 48,
@@ -594,9 +1623,33 @@
    "type": "activities",
    "hidden": true,
    "missable": false,
-   "guide": "METHOD UNCONFIRMED. The official description reads only 'Second time's the charm', and Output Lag lists this among the hidden trophies with no confirmed unlock method at launch. The words suggest failing at something and succeeding on the retry; treat any specific claim as unproven until a source confirms it. Basis: official description (Exophase PSN list); unconfirmed status per Output Lag.",
+   "status": "unconfirmed",
+   "guide": "METHOD UNCONFIRMED. The official description reads only 'Second time's the charm', and Output Lag lists this among the hidden trophies with no confirmed unlock method at launch. The words suggest failing at something and succeeding on the retry; treat any specific claim - a named mission, race or activity - as unproven until a source confirms it. Basis: official description (Exophase PSN list); unconfirmed status per Output Lag.",
+   "method": [
+    "No confirmed trigger exists yet - the steps below are the safe-play reading, not a method.",
+    "When you fail a mission or activity, use the game's own retry instead of reloading a save, so a fail-then-succeed pair is on your record.",
+    "If it pops, note what you retried and check the sources page - you may be among the first confirmations."
+   ],
+   "requirements": "Unknown - method not in print at launch.",
+   "effort": "Unknown - unconfirmed trigger",
+   "reading": "The idiom means succeeding on a second attempt after a first failure. The most natural game reading is failing then completing the same activity or mission on retry. Inference, labelled as such.",
+   "safe_play": "Never reload a save purely to erase a failure - let failures stand and retry in-game. That habit covers the plausible trigger at zero cost and loses nothing.",
+   "confirmation": "This tracker flips it to confirmed when a named source prints what the retry actually has to be.",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 49,
@@ -606,9 +1659,33 @@
    "type": "activities",
    "hidden": true,
    "missable": false,
-   "guide": "METHOD UNCONFIRMED. The official description reads only 'What the hell just happened?', and Output Lag lists this among the hidden trophies with no confirmed unlock method at launch. The words suggest witnessing one of the game's strange events; treat any specific claim as unproven until a source confirms it. Basis: official description (Exophase PSN list); unconfirmed status per Output Lag.",
+   "status": "unconfirmed",
+   "guide": "METHOD UNCONFIRMED. The official description reads only 'What the hell just happened?', and Output Lag lists this among the hidden trophies with no confirmed unlock method at launch. The name and the words together suggest witnessing one of the game's strange events; treat any specific location or trigger claim as unproven until a source confirms it. Basis: official description (Exophase PSN list); unconfirmed status per Output Lag.",
+   "method": [
+    "No confirmed trigger exists yet - this is a passive trophy on current evidence.",
+    "Explore off the beaten path, including at night; strange events in this series favour remote places.",
+    "Leave it open rather than farming a rumoured spot that cites no source."
+   ],
+   "requirements": "Unknown - method not in print at launch.",
+   "effort": "Unknown - likely passive/exploration",
+   "reading": "The name is the genre's most famous alien slogan and the description is a witness's reaction - the reading is a UFO-style or otherwise inexplicable random event, witnessed up close. Inference, labelled as such.",
+   "safe_play": "Exploration time also feeds The Goodtime State's 52 areas, so wandering is never wasted even while this stays unconfirmed.",
+   "confirmation": "This tracker flips it to confirmed when a named source prints the event and its trigger conditions.",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 50,
@@ -618,9 +1695,33 @@
    "type": "activities",
    "hidden": true,
    "missable": false,
-   "guide": "METHOD UNCONFIRMED as a full method, though the description is concrete: 'Bowl 'em over with a melee drive-by' - knock someone down with a melee attack delivered from a moving vehicle. Output Lag lists it among the hidden trophies with no confirmed method at launch, so treat the exact setup as unproven until a source confirms it. Basis: official description (Exophase PSN list); unconfirmed status per Output Lag.",
+   "status": "unconfirmed",
+   "guide": "METHOD UNCONFIRMED as a full method, though the description is concrete: 'Bowl 'em over with a melee drive-by' - knock people down with a melee attack delivered from a moving vehicle. Output Lag lists it among the hidden trophies with no confirmed method at launch, so the exact setup - how many people, from which seat, at what speed - is unproven until a source confirms it. The name is the bowling metaphor: a group bowled over like pins. Basis: official description (Exophase PSN list); unconfirmed status per Output Lag.",
+   "method": [
+    "Find a group of pedestrians on a pavement or beachfront.",
+    "From a moving vehicle, use a melee attack as you pass through the group.",
+    "If one pass does not trigger it, the count or setup is narrower than the description - flag it, do not force it."
+   ],
+   "requirements": "A vehicle and a crowd of pedestrians.",
+   "effort": "Unknown - description-led, setup unproven",
+   "reading": "'Ten pin' is bowling's full rack: the description most plausibly wants several people bowled over in one drive-by pass. How many is inference, labelled as such.",
+   "safe_play": "Attempts cost nothing but wanted-level attention; do them away from other feats so an escape does not collide with a timed attempt.",
+   "confirmation": "This tracker flips it to confirmed when a named source prints the exact requirement.",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 51,
@@ -630,10 +1731,34 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Earn $250,000 laundering Marked Bills through your contacts. Marked Bills come from scores; run them through your laundering contacts until the laundered total crosses a quarter million. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Earn $250,000 laundering Marked Bills through your contacts. Marked Bills come from scores; run them through your laundering contacts until the laundered total crosses a quarter million. Only laundered money counts - sitting on marked bills earns nothing, so keep the pipeline moving after every score. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Take scores that pay in Marked Bills - vaults and truck robberies feed this.",
+    "Launder the bills through your contacts after each score.",
+    "The trophy lands when the laundered total crosses $250,000."
+   ],
+   "requirements": "Laundering contacts unlocked; a steady run of scores.",
+   "effort": "Money grind - pairs with the vault and truck trophies",
+   "count": "$250,000",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "$250,000"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 52,
@@ -643,10 +1768,31 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Spend $100,000 across all shops. The counter is cumulative across every store, so normal play - clothes, weapons, vehicles, services - gets there; big property and garage spending speeds it up. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Spend $100,000 across all shops. The counter is cumulative across every store, so normal play - clothes, weapons, vehicles, services - gets there; big property and garage spending speeds it up. Do not hoard cash waiting for this: spending is the requirement, and the garage trophy wants the same money moving. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Spend normally as you play - every shop counts toward one total.",
+    "If you are close late-game, garages and vehicle purchases close the gap fast.",
+    "The trophy lands when cumulative shop spending crosses $100,000."
+   ],
+   "requirements": "Income from scores and missions.",
+   "effort": "Passive-to-light - accrues with normal spending",
+   "count": "$100,000",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "$100,000"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 53,
@@ -656,10 +1802,31 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Purchase all garage properties - 8 garages in the list data. Buy each garage as your money allows; the last few are the expensive ones, so leave this until the economy trophies are paying out. Basis: official description (Exophase PSN list); garage count from the list data.",
+   "status": "confirmed",
+   "guide": "Purchase all garage properties - 8 garages in the list data. Buy each garage as your money allows; the last few are the expensive ones, so leave this until the economy trophies are paying out. Every garage purchase also counts toward Treat Yo Self's shop spending. Basis: official description (Exophase PSN list); garage count from the list data.",
+   "method": [
+    "Buy garages as income allows, cheapest first.",
+    "Fund the expensive last ones with vault and laundering income.",
+    "The trophy lands on the eighth garage purchased."
+   ],
+   "requirements": "Serious in-game cash - a late-game purchase set.",
+   "effort": "Money grind - buy late, not early",
+   "count": "8 garages",
    "roadmap_step": 6,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "8 garages"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 54,
@@ -669,10 +1836,31 @@
    "type": "activities",
    "hidden": false,
    "missable": false,
-   "guide": "Register 10 vehicles to the Scooter Bros app: add ten of your vehicles through the app and the trophy lands on the tenth. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "Register 10 vehicles to the Scooter Bros app: add ten of your vehicles through the app and the trophy lands on the tenth. It pairs naturally with Whip It Good - every new vehicle you discover is a candidate to register on the spot. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Open the Scooter Bros app with a vehicle you own or have taken.",
+    "Register it; repeat with nine more vehicles.",
+    "The trophy lands on the tenth registration."
+   ],
+   "requirements": "The Scooter Bros app; ten vehicles.",
+   "effort": "Quick - minutes once you have the vehicles",
+   "count": "10 vehicles",
    "roadmap_step": 5,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "Output Lag" }, { "name": "Press Start" }],
-   "count": "10 vehicles"
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    }
+   ]
   },
   {
    "id": 55,
@@ -682,9 +1870,38 @@
    "type": "platinum",
    "hidden": false,
    "missable": false,
-   "guide": "The platinum: earn the other 54 trophies and Vice Got a Price! unlocks on its own. Basis: official description (Exophase PSN list).",
+   "status": "confirmed",
+   "guide": "The platinum: earn the other 54 trophies and Vice Got a Price! unlocks on its own. There is nothing to do for this one directly - if you are at 54 of 55, the board's remaining list is your whole job. The official list has no online trophies, so the platinum never depends on servers or other players. Basis: official description (Exophase PSN list).",
+   "method": [
+    "Earn the other 54 trophies.",
+    "The platinum unlocks automatically on the 54th."
+   ],
+   "requirements": "All 54 other trophies.",
+   "effort": "The whole run",
    "roadmap_step": 7,
-   "sources": [{ "name": "Exophase (PSN)" }, { "name": "XCT.live (Xbox catalog)" }, { "name": "TrueAchievements" }, { "name": "Output Lag" }, { "name": "Press Start" }, { "name": "GTABase" }, { "name": "PowerPyx" }]
+   "sources": [
+    {
+     "name": "Exophase (PSN)"
+    },
+    {
+     "name": "XCT.live (Xbox catalog)"
+    },
+    {
+     "name": "TrueAchievements"
+    },
+    {
+     "name": "Output Lag"
+    },
+    {
+     "name": "Press Start"
+    },
+    {
+     "name": "GTABase"
+    },
+    {
+     "name": "PowerPyx"
+    }
+   ]
   }
  ]
 }
