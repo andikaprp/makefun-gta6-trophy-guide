@@ -1,0 +1,468 @@
+/* Leonida Legend - sunset ledger styling.
+   A paper-ledger take on a Leonida sunset: warm cream pages, ink
+   rules, coral and teal accents, tabular tallies. System fonts only,
+   no webfonts, no images, nothing loaded from anywhere else. */
+
+:root {
+  --paper: #fdf6ec;
+  --paper-deep: #f7ead3;
+  --ink: #2b2118;
+  --ink-soft: #5c4c3a;
+  --rule: #d9c39a;
+  --coral: #e4572e;
+  --coral-deep: #b23a1d;
+  --teal: #0e7c7b;
+  --gold: #b8860b;
+  --silver: #6f7d8c;
+  --bronze: #9a5b33;
+  --platinum: #3f6d8e;
+  --sunset-a: #ff9e5e;
+  --sunset-b: #e4572e;
+  --sunset-c: #7a2e5d;
+  --card: #fffdf8;
+  --shadow: 0 1px 2px rgba(43, 33, 24, 0.12), 0 4px 14px rgba(43, 33, 24, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+a { color: var(--coral-deep); }
+a:hover { color: var(--coral); }
+
+/* ---------- masthead ---------- */
+
+.masthead {
+  background: linear-gradient(160deg, var(--sunset-c) 0%, var(--sunset-b) 46%, var(--sunset-a) 100%);
+  color: #fff8ee;
+  padding: 28px 20px 18px;
+  border-bottom: 6px double var(--ink);
+}
+
+.masthead-top {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.kicker {
+  margin: 0 0 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.brand {
+  margin: 0;
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 0 rgba(43, 33, 24, 0.25);
+}
+
+.tagline {
+  margin: 8px 0 0;
+  max-width: 46ch;
+  font-style: italic;
+  opacity: 0.95;
+}
+
+.ledger-card {
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow);
+  padding: 12px 16px 14px;
+  min-width: 250px;
+  transform: rotate(0.6deg);
+}
+
+.ledger-pct {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ledger-count { font-size: 14px; color: var(--ink-soft); margin-top: 2px; }
+
+.ledger-bar {
+  height: 10px;
+  border: 1px solid var(--ink);
+  background: var(--paper-deep);
+  margin: 8px 0;
+}
+.ledger-bar span {
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(45deg, var(--teal) 0 8px, #0a5f5e 8px 16px);
+}
+
+.ledger-grades { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tally {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  border: 1px solid var(--rule);
+  padding: 1px 6px;
+  background: var(--card);
+}
+.tally-platinum { border-left: 5px solid var(--platinum); }
+.tally-gold { border-left: 5px solid var(--gold); }
+.tally-silver { border-left: 5px solid var(--silver); }
+.tally-bronze { border-left: 5px solid var(--bronze); }
+
+.main-nav {
+  max-width: 1080px;
+  margin: 18px auto 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: #fff8ee;
+  text-decoration: none;
+  border: 1px solid rgba(255, 248, 238, 0.65);
+  padding: 5px 14px;
+  font-size: 15px;
+  background: rgba(43, 33, 24, 0.18);
+}
+.nav-link:hover { background: rgba(43, 33, 24, 0.34); color: #ffffff; }
+.nav-link.is-active { background: var(--paper); color: var(--coral-deep); border-color: var(--paper); font-weight: 700; }
+
+.io-row {
+  max-width: 1080px;
+  margin: 12px auto 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 6px 14px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.btn:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--ink); }
+
+.btn-io { background: #fff8ee; }
+
+.io-note { font-size: 13px; opacity: 0.92; font-style: italic; }
+
+/* ---------- page frame ---------- */
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 22px 20px 10px;
+}
+
+.view-title { font-size: 30px; margin: 6px 0 8px; }
+.view-lede { color: var(--ink-soft); max-width: 68ch; margin-top: 0; }
+
+.site-foot {
+  max-width: 1080px;
+  margin: 26px auto 0;
+  padding: 14px 20px 30px;
+  border-top: 3px double var(--rule);
+  color: var(--ink-soft);
+  font-size: 14px;
+  text-align: center;
+}
+
+.empty-note {
+  border: 1px dashed var(--coral);
+  background: #fff3e6;
+  padding: 14px 16px;
+}
+
+/* ---------- board controls ---------- */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: end;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--teal);
+  padding: 12px 16px;
+  box-shadow: var(--shadow);
+}
+
+.ctl {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+.ctl select,
+.ctl input[type="search"] {
+  font: inherit;
+  font-family: inherit;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--ink-soft);
+  padding: 6px 8px;
+}
+
+.ctl-search { flex: 1 1 220px; }
+
+.ctl-check {
+  flex-direction: row;
+  align-items: center;
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  gap: 8px;
+  padding-bottom: 6px;
+}
+
+.board-note { color: var(--ink-soft); font-size: 15px; }
+
+/* ---------- trophy cards ---------- */
+
+.board-group { margin-top: 26px; }
+
+.group-title {
+  font-size: 21px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 4px;
+  margin: 0 0 14px;
+}
+
+.group-count {
+  font-size: 13px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-left: 6px solid var(--bronze);
+  padding: 12px 14px 14px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card.is-done { background: #f2f7ec; border-left-color: var(--teal); }
+.card.is-masked { background: repeating-linear-gradient(-45deg, var(--card) 0 14px, #f6ecd9 14px 28px); }
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-step {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  padding: 0 6px;
+  background: var(--paper);
+}
+
+.card-name { margin: 0; font-size: 19px; line-height: 1.25; }
+.card-name a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--sunset-a); }
+.card-name a:hover { color: var(--coral-deep); }
+
+.card-desc { margin: 0; color: var(--ink-soft); font-size: 15px; flex: 1; }
+
+.check { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px; }
+.check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.check-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  display: inline-block;
+  position: relative;
+  flex: none;
+}
+.check input:checked + .check-box { background: var(--teal); }
+.check input:checked + .check-box::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 11px;
+  border: solid #ffffff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(42deg);
+}
+.check input:focus-visible + .check-box { outline: 3px solid var(--coral); outline-offset: 2px; }
+.check-label { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ---------- chips ---------- */
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.chip {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  padding: 1px 8px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink-soft);
+}
+
+.chip-platinum { background: var(--platinum); border-color: var(--platinum); color: #ffffff; }
+.chip-gold { background: #f3c94f; border-color: var(--gold); color: #4a3405; }
+.chip-silver { background: #dfe6ec; border-color: var(--silver); color: #33404d; }
+.chip-bronze { background: #e8c39a; border-color: var(--bronze); color: #4f2d12; }
+.chip-kind { border-style: dashed; }
+.chip-flag { background: #efe6f5; border-color: var(--sunset-c); color: var(--sunset-c); }
+.chip-watch { background: #ffe1d6; border-color: var(--coral); color: var(--coral-deep); font-weight: 700; }
+.chip-count { background: #e2f0ee; border-color: var(--teal); color: #084c4b; }
+
+/* ---------- detail ---------- */
+
+.crumb { margin-top: 0; }
+
+.detail {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-top: 6px solid var(--coral);
+  box-shadow: var(--shadow);
+  padding: 22px 26px 26px;
+  max-width: 760px;
+}
+
+.detail-head h1 { margin: 0 0 10px; font-size: 34px; line-height: 1.15; }
+.detail-desc { font-size: 19px; font-style: italic; color: var(--ink-soft); }
+.guide-text { font-size: 17px; }
+.sources-line, .step-line { color: var(--ink-soft); font-size: 15px; }
+.masked-note { border-left: 4px solid var(--sunset-c); padding-left: 12px; color: var(--ink-soft); }
+
+.btn-toggle {
+  background: var(--teal);
+  color: #ffffff;
+  border-color: #084c4b;
+  box-shadow: 2px 2px 0 #084c4b;
+  font-size: 16px;
+  padding: 9px 18px;
+}
+
+.watch-box {
+  border: 2px solid var(--coral);
+  background: #fff1e8;
+  padding: 14px 18px;
+  margin: 18px 0;
+}
+.watch-box h2 { margin-top: 0; color: var(--coral-deep); font-size: 20px; }
+.watch-box-road { max-width: 820px; }
+
+/* ---------- roadmap ---------- */
+
+.road-step { margin-top: 26px; max-width: 820px; }
+.road-step h2 { font-size: 22px; border-bottom: 2px solid var(--ink); padding-bottom: 4px; }
+.road-summary { color: var(--ink-soft); margin-top: 6px; }
+
+.road-list { list-style: none; margin: 0; padding: 0; border: 1px solid var(--rule); background: var(--card); }
+.road-row {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 8px 14px;
+  border-bottom: 1px dotted var(--rule);
+  flex-wrap: wrap;
+}
+.road-row:last-child { border-bottom: none; }
+.road-row.is-done { background: #f2f7ec; }
+.road-row a { font-weight: 700; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--sunset-a); }
+.road-state {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  padding: 0 6px;
+  min-width: 58px;
+  text-align: center;
+}
+.road-row.is-done .road-state { background: var(--teal); color: #ffffff; }
+.road-meta { color: var(--ink-soft); font-size: 14px; margin-left: auto; }
+
+/* ---------- method prose ---------- */
+
+.prose { max-width: 760px; }
+.prose h2 { margin-top: 26px; font-size: 22px; }
+.prose li { margin-bottom: 6px; }
+
+/* ---------- dialog ---------- */
+
+dialog {
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  max-width: 640px;
+  width: calc(100% - 40px);
+  box-shadow: 6px 6px 0 rgba(43, 33, 24, 0.35);
+}
+dialog::backdrop { background: rgba(43, 33, 24, 0.45); }
+dialog textarea {
+  width: 100%;
+  min-height: 180px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  padding: 10px;
+  border: 1px solid var(--ink-soft);
+  background: var(--card);
+  color: var(--ink);
+}
+.dialog-actions { display: flex; gap: 10px; margin-top: 12px; }
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 640px) {
+  .brand { font-size: 34px; }
+  .detail { padding: 16px; }
+  .detail-head h1 { font-size: 27px; }
+  .ledger-card { transform: none; min-width: 0; width: 100%; }
+  .road-meta { margin-left: 0; }
+}
